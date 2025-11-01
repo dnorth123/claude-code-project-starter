@@ -58,8 +58,9 @@ When you say `"Update status"`, Claude will:
    - Log session progress
    - Note files modified
    - Record active decisions
-5. Commit changes to git (optional)
-6. Provide summary and suggest next steps
+5. Update docs/project/roadmap.md if new items were discussed
+6. Commit changes to git (optional)
+7. Provide summary and suggest next steps
 
 **What Claude infers**:
 - Completed tasks from "I just finished X" statements
@@ -67,6 +68,13 @@ When you say `"Update status"`, Claude will:
 - File modifications = active development
 - Technical decisions from discussion
 - Blockers from "stuck on X" or error discussions
+- Future enhancements from "save for later" or "v2" discussions
+
+**Roadmap Integration**:
+- During planning: Out-of-scope items → roadmap.md
+- During development: "Future enhancement" → roadmap.md
+- After phase complete: Review and organize roadmap items
+- After final phase: Prompt for roadmap planning
 
 ---
 
@@ -102,6 +110,26 @@ When you say `"Update status"`, Claude will:
 
 ---
 
+## Roadmap Management
+
+**Status**: Active
+**Items Collected**: [0]
+**Next Review**: After Phase 3 completion
+
+**Auto-capture Triggers**:
+- "Let's save that for v2" → Added to roadmap
+- "Out of scope" in planning → Added to roadmap  
+- "Future enhancement" → Added to roadmap
+- "Good idea but not now" → Added to roadmap
+- "Add to roadmap" → Added to roadmap
+- "Park that idea" → Added to roadmap
+
+**Post-MVP Prompt**: 
+After Phase 3 completion, ask:
+"You've completed the MVP! You have [N] items in the roadmap. Would you like to review them and potentially plan Phase 4 for enhancements?"
+
+---
+
 ## Project Documentation
 
 ### Core Docs (Persistent)
@@ -120,6 +148,11 @@ When you say `"Update status"`, Claude will:
   - Technology decisions
   - Dependencies
   - Architecture notes
+  
+- **Roadmap**: `docs/project/roadmap.md` (~1-2K tokens)
+  - Future enhancements
+  - Ideas parking lot
+  - Version 2.0 considerations
 
 ### Phase Plans (Created during planning)
 - `docs/project/phases/phase-N-name.md` (~2K tokens each)

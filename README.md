@@ -3,6 +3,7 @@
 [![Use this template](https://img.shields.io/badge/Use%20this-template-blue?style=for-the-badge)](https://github.com/dnorth123/personal-project-starter/generate)
 [![Claude Code Compatible](https://img.shields.io/badge/Claude%20Code-Compatible-orange?style=for-the-badge)](https://claude.ai)
 [![MIT License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+[![Version](https://img.shields.io/badge/Version-v1.0.0-purple?style=for-the-badge)](https://github.com/dnorth123/personal-project-starter/releases)
 
 A structured template for building personal projects with Claude Code assistance. This template provides automatic status tracking, intelligent context management, and a phase-based development approach that maximizes productivity while working within token limits.
 
@@ -116,6 +117,7 @@ your-project/
 │       ├── build-status.md       # Current status & progress tracking
 │       ├── project-plan.md       # Requirements & features
 │       ├── tech-stack.md         # Technical decisions
+│       ├── roadmap.md           # Future enhancements (auto-populated)
 │       └── phases/               # Detailed phase plans (created during planning)
 ├── .claude/
 │   └── claude.md                 # Session context (auto-updated)
@@ -123,6 +125,21 @@ your-project/
 ├── README.md                     # Project readme (customize this)
 └── SETUP.md                      # Template instructions & tips
 ```
+
+## 🚀 Beyond MVP: Roadmap System
+
+The template includes a built-in roadmap system that:
+- **Captures future ideas** without disrupting current development
+- **Prevents scope creep** by giving ideas a proper home
+- **Enables continuous development** after MVP completion
+- **Maintains momentum** with natural transition to v2 features
+
+During development, simply say:
+- `"Add to roadmap: [feature idea]"`
+- `"That's a good v2 feature"`
+- `"Let's save that for later"`
+
+Claude automatically maintains your roadmap and offers to plan enhancements after MVP completion.
 
 ## 🔧 How It Works
 
@@ -175,6 +192,8 @@ your-project/
 | `"Start Phase [N]"` | Begins new phase | After planning/completion |
 | `"Phase [N] complete"` | Marks phase done | End of phase |
 | `"Save everything"` | Prepares for context clear | Before `/clear` |
+| `"Add to roadmap: [idea]"` | Captures future enhancement | Anytime during dev |
+| `"Review roadmap"` | Reviews collected ideas | After MVP completion |
 
 ## 💡 Token Budget Management
 
@@ -216,6 +235,7 @@ The template is designed to maximize coding time:
 3. **Update regularly** - Run `"Update status"` every 30-60 minutes
 4. **Clear when prompted** - Don't push context limits, clear when Claude suggests
 5. **Use git tags** - Phase completion tags make rollback easy if experiments fail
+6. **Capture all ideas** - Use `"Add to roadmap"` liberally; filter later when planning v2
 
 ## 📊 Version History
 

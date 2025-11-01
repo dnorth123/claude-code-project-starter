@@ -27,10 +27,10 @@
 - [Core feature/capability 3]
 
 ### Out of Scope (Future)
-*What to explicitly NOT build now:*
-- [Feature to defer]
-- [Feature to defer]
-- [Feature to defer]
+*What to explicitly NOT build now - these items are automatically added to roadmap.md:*
+- [Feature to defer] → Added to roadmap
+- [Feature to defer] → Added to roadmap
+- [Feature to defer] → Added to roadmap
 
 ### Nice to Have
 *Optional enhancements if time permits:*

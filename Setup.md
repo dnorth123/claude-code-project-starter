@@ -7,6 +7,7 @@ your-project/
 │       ├── build-status.md       # Current status tracking
 │       ├── project-plan.md       # Project requirements
 │       ├── tech-stack.md         # Technical decisions
+│       ├── roadmap.md           # Future enhancements (auto-populated)
 │       └── phases/               # Detailed phase plans
 │           ├── phase-1-foundation.md
 │           ├── phase-2-features.md
@@ -73,6 +74,13 @@ Then close Claude Code. Resume anytime with:
 
 ### 5. Keep Docs Lean
 Don't over-document. The templates have the right balance.
+
+### 6. Capture Ideas Without Disrupting Flow
+```bash
+# During development when you have an idea
+"Add to roadmap: [cool feature idea]"
+```
+Keeps you focused on current phase while preserving good ideas.
 
 ---
 

@@ -16,6 +16,7 @@
 | **Next Task**      | Complete project planning  |
 | **Live URL**       | Not deployed yet           |
 | **Context Status** | 🟢 Fresh (~2K tokens - 1%) |
+| **Roadmap Items**  | [0] collected              |
 
 ---
 
@@ -90,6 +91,20 @@
 
 ---
 
+## Roadmap Summary
+
+**Items Collected**: [0]  
+**Last Addition**: None yet  
+**Categories**:
+- Priority 1 (Quick Wins): [0]
+- Priority 2 (Major Features): [0]  
+- Priority 3 (Nice to Have): [0]
+- Ideas Parking Lot: [0]
+
+*Full roadmap: docs/project/roadmap.md*
+
+---
+
 ## Resume Instructions
 
 ### To Start Planning
@@ -129,6 +144,12 @@
 → Claude updates all docs, commits changes, prepares for /clear  
 → You run `/clear` in Claude Code  
 → Resume with: `"Check the build status and tell me where we are at"`
+
+### After MVP Completion
+
+"Review roadmap"
+
+→ Claude reviews collected enhancements, suggests planning session for v2
 
 ---
 

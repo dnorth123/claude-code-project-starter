@@ -37,3 +37,6 @@ yarn-error.log*
 
 # Optional: Uncomment to keep session context private
 # .claude/claude.md
+
+# Enhanced Setup
+ENHANCEMENT-SETUP.md

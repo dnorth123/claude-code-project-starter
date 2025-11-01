@@ -3,7 +3,6 @@
 [![Use this template](https://img.shields.io/badge/Use%20this-template-blue?style=for-the-badge)](https://github.com/dnorth123/personal-project-starter/generate)
 [![Claude Code Compatible](https://img.shields.io/badge/Claude%20Code-Compatible-orange?style=for-the-badge)](https://claude.ai)
 [![MIT License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-[![Version](https://img.shields.io/github/v/release/dnorth123/personal-project-starter?style=for-the-badge)](https://github.com/dnorth123/personal-project-starter/releases)
 
 A structured template for building personal projects with Claude Code assistance. This template provides automatic status tracking, intelligent context management, and a phase-based development approach that maximizes productivity while working within token limits.
 

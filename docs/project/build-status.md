@@ -157,7 +157,7 @@
 
 **[TODAY]**: Session 0 - Project Initialized
 
-- Created from personal-project-starter template
+- Created from claude-code-project-starter template
 - Repository: [REPO_URL]
 - Local path: [LOCAL_PATH]
 - Ready for planning session with Claude Code
@@ -169,7 +169,7 @@
 
 ## Notes
 
-This project uses the personal-project-starter template for structured development with Claude Code assistance.
+This project uses the claude-code-project-starter template for structured development with Claude Code assistance.
 
 **Template Features**:
 

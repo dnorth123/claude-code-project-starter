@@ -1,9 +1,9 @@
 # Claude Code Project Starter Template
 
-[![Use this template](https://img.shields.io/badge/Use%20this-template-blue?style=for-the-badge)](https://github.com/dnorth123/personal-project-starter/generate)
+[![Use this template](https://img.shields.io/badge/Use%20this-template-blue?style=for-the-badge)](https://github.com/dnorth123/claude-code-project-starter/generate)
 [![Claude Code Compatible](https://img.shields.io/badge/Claude%20Code-Compatible-orange?style=for-the-badge)](https://claude.ai)
 [![MIT License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-v1.0.0-purple?style=for-the-badge)](https://github.com/dnorth123/personal-project-starter/releases)
+[![Version](https://img.shields.io/badge/Version-v1.0.0-purple?style=for-the-badge)](https://github.com/dnorth123/claude-code-project-starter/releases)
 
 A structured template for building solo projects with Claude Code. This template is perfect for beginners and more advanced users. This template provides automatic status tracking, intelligent context management, and a phase-based development approach that maximizes productivity while working within token limits.
 
@@ -63,13 +63,13 @@ This template transforms how you build projects with Claude Code by providing:
 
 ```bash
 # Create and clone in one command
-gh repo create my-awesome-project --template dnorth123/personal-project-starter --private --clone
+gh repo create my-awesome-project --template dnorth123/claude-code-project-starter --private --clone
 cd my-awesome-project
 ```
 
 #### Option 2: GitHub Web
 
-1. Click the ["Use this template"](https://github.com/dnorth123/personal-project-starter/generate) button above
+1. Click the ["Use this template"](https://github.com/dnorth123/claude-code-project-starter/generate) button above
 2. Name your new repository
 3. Clone your new repo locally
 
@@ -77,14 +77,14 @@ cd my-awesome-project
 
 ```bash
 # Clone the template
-git clone https://github.com/dnorth123/personal-project-starter.git my-awesome-project
+git clone https://github.com/dnorth123/claude-code-project-starter.git my-awesome-project
 cd my-awesome-project
 
 # Remove template git history and start fresh
 rm -rf .git
 git init
 git add .
-git commit -m "Initial commit from personal-project-starter template"
+git commit -m "Initial commit from claude-code-project-starter template"
 ```
 
 ### Initial Setup (5 minutes)
@@ -284,7 +284,7 @@ The template is designed to provide a robust development system that minimizes t
 
 ## 📊 Version History
 
-See [Releases](https://github.com/dnorth123/personal-project-starter/releases) for a detailed version history.
+See [Releases](https://github.com/dnorth123/claude-code-project-starter/releases) for a detailed version history.
 
 ### Latest: v1.0.0 (November 2025)
 
@@ -326,6 +326,6 @@ If this template helps you ship projects:
 
 ---
 
-**Ready to build something awesome?** Click ["Use this template"](https://github.com/dnorth123/personal-project-starter/generate) and turn that project idea into reality! 🚀
+**Ready to build something awesome?** Click ["Use this template"](https://github.com/dnorth123/claude-code-project-starter/generate) and turn that project idea into reality! 🚀
 
 Remember: The best project is a shipped project. This template helps you ship.

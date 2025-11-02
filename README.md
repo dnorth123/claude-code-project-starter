@@ -1,20 +1,16 @@
-# Personal Project Starter Template 🚀
+# Claude Code Project Starter Template
 
 [![Use this template](https://img.shields.io/badge/Use%20this-template-blue?style=for-the-badge)](https://github.com/dnorth123/personal-project-starter/generate)
 [![Claude Code Compatible](https://img.shields.io/badge/Claude%20Code-Compatible-orange?style=for-the-badge)](https://claude.ai)
 [![MIT License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-v1.0.0-purple?style=for-the-badge)](https://github.com/dnorth123/personal-project-starter/releases)
 
-A structured template for building personal projects with Claude Code assistance. This template provides automatic status tracking, intelligent context management, and a phase-based development approach that maximizes productivity while working within token limits.
-
-## 📸 See It In Action
-
-![Claude Code Workflow Demo](demo.gif)
-*Watch how easy it is to start a project, track progress, and resume work across sessions*
+A structured template for building solo projects with Claude Code. This template is perfect for beginners and more advanced users. This template provides automatic status tracking, intelligent context management, and a phase-based development approach that maximizes productivity while working within token limits.
 
 ## 🎯 What This Template Does
 
 This template transforms how you build projects with Claude Code by providing:
+
 - **Structured documentation** that keeps you organized across multiple sessions
 - **Automatic context management** that alerts you before hitting token limits  
 - **Smart resume system** that lets you pick up exactly where you left off
@@ -24,11 +20,13 @@ This template transforms how you build projects with Claude Code by providing:
 ## ✨ Key Features
 
 ### Automatic Status Updates
+
 - Say `"Update status"` and Claude automatically updates your progress
 - Tracks completed tasks, decisions made, and next steps
 - Maintains a session log for easy reference
 
 ### Intelligent Context Management
+
 - 🟢 Green (< 70%): Smooth sailing
 - 🟡 Yellow (70-85%): Note for later  
 - 🟠 Orange (85-95%): Clear after current task
@@ -37,12 +35,14 @@ This template transforms how you build projects with Claude Code by providing:
 - Guides you through context clears smoothly
 
 ### Phase-Based Development
+
 - Planning phase helps define scope and approach
 - Breaks development into logical phases (typically 3-5)
 - Each phase has clear goals and deliverables
 - Git tags at phase completions for easy rollback
 
 ### Smart Session Resume
+
 - Close Claude Code anytime, resume exactly where you left off
 - Simple command: `"Check the build status and tell me where we are at"`
 - Claude loads minimal context (~4K tokens) but knows full project state
@@ -60,6 +60,7 @@ This template transforms how you build projects with Claude Code by providing:
 ### Create New Project from Template
 
 #### Option 1: GitHub CLI (Recommended)
+
 ```bash
 # Create and clone in one command
 gh repo create my-awesome-project --template dnorth123/personal-project-starter --private --clone
@@ -67,11 +68,13 @@ cd my-awesome-project
 ```
 
 #### Option 2: GitHub Web
+
 1. Click the ["Use this template"](https://github.com/dnorth123/personal-project-starter/generate) button above
 2. Name your new repository
 3. Clone your new repo locally
 
 #### Option 3: Direct Clone & Setup
+
 ```bash
 # Clone the template
 git clone https://github.com/dnorth123/personal-project-starter.git my-awesome-project
@@ -87,26 +90,60 @@ git commit -m "Initial commit from personal-project-starter template"
 ### Initial Setup (5 minutes)
 
 1. **Update project docs with your specifics:**
-```bash
-# Edit these files with your project details:
-- docs/project/project-plan.md    # Define what you're building
-- docs/project/tech-stack.md      # Choose your technologies
-- docs/project/build-status.md    # Update project name and paths
+   
+   **Your Project Plan** (docs/project/project-plan.md)    
+   
+   Define what you're building: overview, scope, user flows, features/requirements, and more.
+   
+   Fill in what you know, leave `[TBD]` or `[Unsure]` for items to discuss with Claude.
+   
+   Once you start the planning process, Claude Code will:
+   
+   1. Review what you've defined
+   2. Ask questions to fill gaps
+   3. Help refine scope and requirements
+   4. Create detailed phase plans
+   5. Get you ready to start building
+   
+   **Your Tech Stack** (docs/project/tech-stack.md)
+   
+   Define the core technologies you want to use, key dependencies, architecture notes and more. 
+   
+   Fill in what you know. Mark uncertain items as `[TBD]` or `[Considering...]`.
+   
+   During the planning process, Claude Code will:
+   
+   1. Review your defined stack
+   2. Ask about `[TBD]` items
+   3. Recommend technologies based on your requirements
+   4. Help make final decisions
+   5. Document rationale
+   6. Prepare for Phase 1 development
+
+        **Build Status Tracker** (docs/project/build-status.md)    
+
+        Update with your repository URL and local folder path
+
+```
+
 ```
 
 2. **Start Claude Code and begin planning:**
-```bash
-# Open Claude Code in your project directory
-# Then say:
-"Check the docs/project/ folder and help me get started"
-```
+   
+   ```bash
+   1. Open Claude Code in your project directory
+   2. Switch to Plan Mode using Shift+Tab
+   3. Then enter:
+   "Check the docs/project/ folder and help me get started"
+   ```
 
 3. **Claude will:**
-   - Review your project plans
-   - Ask clarifying questions
-   - Help finalize technical decisions
-   - Create detailed phase plans
-   - Get you ready to start building
+   
+   - Review your initial project plan and tech stack.
+   - Ask clarifying questions based on what you've provided
+   - Help finalize and document technical decisions
+   - Iteratively work with you to create detailed phase plans
+   - Give you a firm foundation to start building
 
 ## 📁 Template Structure
 
@@ -129,21 +166,24 @@ your-project/
 ## 🚀 Beyond MVP: Roadmap System
 
 The template includes a built-in roadmap system that:
+
 - **Captures future ideas** without disrupting current development
 - **Prevents scope creep** by giving ideas a proper home
 - **Enables continuous development** after MVP completion
 - **Maintains momentum** with natural transition to v2 features
 
-During development, simply say:
+During planning or on-going development, simply say:
+
 - `"Add to roadmap: [feature idea]"`
 - `"That's a good v2 feature"`
 - `"Let's save that for later"`
 
 Claude automatically maintains your roadmap and offers to plan enhancements after MVP completion.
 
-## 🔧 How It Works
+## 🔧 How the Process Works
 
 ### Day 1: Planning (30 minutes)
+
 ```bash
 "Check the docs/project/ folder and help me get started"
 # Claude reviews docs, asks questions, creates phase plans
@@ -156,6 +196,7 @@ Claude automatically maintains your roadmap and offers to plan enhancements afte
 ```
 
 ### Day 2: Continue Development
+
 ```bash
 "Check the build status and tell me where we are at"
 # Claude loads status, reminds you of context, continues work
@@ -168,6 +209,7 @@ Claude automatically maintains your roadmap and offers to plan enhancements afte
 ```
 
 ### When Context Gets Full
+
 ```bash
 # Claude alerts: 🟠 Orange - approaching limit
 
@@ -183,32 +225,33 @@ Claude automatically maintains your roadmap and offers to plan enhancements afte
 
 ## 📝 Key Commands
 
-| Command | What It Does | When to Use |
-|---------|--------------|-------------|
-| `"Check the docs/project/ folder and help me get started"` | Starts planning session | First time only |
-| `"Check the build status and tell me where we are at"` | Loads project status | Resume work |
-| `"Update status"` | Auto-updates progress | Every 30-60 min |
-| `"Check context"` | Shows token usage | Verify context health |
-| `"Start Phase [N]"` | Begins new phase | After planning/completion |
-| `"Phase [N] complete"` | Marks phase done | End of phase |
-| `"Save everything"` | Prepares for context clear | Before `/clear` |
-| `"Add to roadmap: [idea]"` | Captures future enhancement | Anytime during dev |
-| `"Review roadmap"` | Reviews collected ideas | After MVP completion |
+| Command                                                    | What It Does                | When to Use               |
+| ---------------------------------------------------------- | --------------------------- | ------------------------- |
+| `"Check the docs/project/ folder and help me get started"` | Starts planning session     | First time only           |
+| `"Check the build status and tell me where we are at"`     | Loads project status        | Resume work               |
+| `"Update status"`                                          | Auto-updates progress       | Every 30-60 min           |
+| `"Check context"`                                          | Shows token usage           | Verify context health     |
+| `"Start Phase [N]"`                                        | Begins new phase            | After planning/completion |
+| `"Phase [N] complete"`                                     | Marks phase done            | End of phase              |
+| `"Save everything"`                                        | Prepares for context clear  | Before `/clear`           |
+| `"Add to roadmap: [idea]"`                                 | Captures future enhancement | Anytime during dev        |
+| `"Review roadmap"`                                         | Reviews collected ideas     | After MVP completion      |
 
 ## 💡 Token Budget Management
 
-The template is designed to maximize coding time:
+The template is designed to provide a robust development system that minimizes token usage and maximizes coding time:
 
-| Activity | Token Usage | % of Budget |
-|----------|------------|-------------|
-| Planning (one-time) | ~26K | 13% |
-| Resume session | ~4-7K | 2-3.5% |
-| Status update | ~3K | 1.5% |
-| **Available for coding** | **~160-170K** | **80-85%** |
+| Activity                 | Token Usage   | % of Budget |
+| ------------------------ | ------------- | ----------- |
+| Planning (one-time)      | ~26K          | 13%         |
+| Resume session           | ~4-7K         | 2-3.5%      |
+| Status update            | ~3K           | 1.5%        |
+| **Available for coding** | **~160-170K** | **80-85%**  |
 
 ## 🎯 Example Use Cases
 
 ### Weekend Project
+
 - Friday night: 30 min planning session
 - Saturday: 2-3 hours Phase 1 (foundation)
 - Sunday morning: 2 hours Phase 2 (features)
@@ -216,6 +259,7 @@ The template is designed to maximize coding time:
 - **Result**: Deployed working project by Sunday evening
 
 ### Learning Project
+
 - Define learning goals in project-plan.md
 - Choose technologies you want to learn
 - Build something real while learning
@@ -223,6 +267,7 @@ The template is designed to maximize coding time:
 - Git tags let you experiment safely
 
 ### Proof of Concept
+
 - Quickly validate an idea
 - Focus on core functionality in Phase 1
 - Add nice-to-haves only if time permits
@@ -242,6 +287,7 @@ The template is designed to maximize coding time:
 See [Releases](https://github.com/dnorth123/personal-project-starter/releases) for a detailed version history.
 
 ### Latest: v1.0.0 (November 2025)
+
 - ✅ Initial release with core template structure
 - ✅ Automatic status tracking system
 - ✅ Intelligent context management
@@ -251,6 +297,7 @@ See [Releases](https://github.com/dnorth123/personal-project-starter/releases) f
 ## 🤝 Contributing
 
 This is a personal template, but suggestions are welcome! Feel free to:
+
 - Fork and customize for your workflow
 - Open issues for bugs or improvements
 - Share your customizations
@@ -265,12 +312,14 @@ MIT License - Use this template however you want! See [LICENSE](LICENSE) file fo
 Built specifically for use with [Claude Code](https://claude.ai) and Anthropic's Claude AI assistant. The template structure is designed around Claude's context windows and capabilities.
 
 Special thanks to:
+
 - The Claude Code team at Anthropic for making AI-assisted development accessible
 - The open source community for inspiration on project structuring
 
 ## 🌟 Show Your Support
 
 If this template helps you ship projects:
+
 - ⭐ Star this repo
 - 🐦 Share it on social media
 - 💬 Let me know what you built with it!

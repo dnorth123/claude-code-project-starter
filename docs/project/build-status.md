@@ -68,6 +68,8 @@
 - [ ] Complete project-plan.md
 - [ ] Define tech-stack.md
 - [ ] Create phase breakdown with Claude
+- [ ] Archive template README as TEMPLATE-README.md
+- [ ] Create project-specific README.md with overview, tech stack, and status
 - [ ] Start Phase 1
 
 **Blockers**: None

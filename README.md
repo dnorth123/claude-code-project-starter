@@ -7,6 +7,17 @@
 
 A structured template for building solo projects with Claude Code. This template is perfect for beginners and more advanced users. This template provides automatic status tracking, intelligent context management, and a phase-based development approach that maximizes productivity while working within token limits.
 
+## 📌 For Template Users
+
+**Important:** This README documents the template system itself. When you start Phase 0 planning with Claude Code, this file will be:
+
+1. **Archived as `TEMPLATE-README.md`** - Kept in your repo for reference
+2. **Replaced with your project-specific `README.md`** - Created by Claude based on your planning session
+
+Your new README will contain your project's overview, tech stack, status, and setup instructions (see [README-STRUCTURE.md](README-STRUCTURE.md) for the template). Claude will keep it updated throughout development.
+
+---
+
 ## 🎯 What This Template Does
 
 This template transforms how you build projects with Claude Code by providing:
@@ -159,7 +170,8 @@ your-project/
 ├── .claude/
 │   └── claude.md                 # Session context (auto-updated)
 ├── .gitignore
-├── README.md                     # Project readme (customize this)
+├── README.md                     # Template documentation (becomes TEMPLATE-README.md)
+├── README-STRUCTURE.md          # Guide for project README structure
 └── SETUP.md                      # Template instructions & tips
 ```
 

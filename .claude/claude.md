@@ -59,8 +59,12 @@ When you say `"Update status"`, Claude will:
    - Note files modified
    - Record active decisions
 5. Update docs/project/roadmap.md if new items were discussed
-6. Commit changes to git (optional)
-7. Provide summary and suggest next steps
+6. Update README.md if significant changes occurred:
+   - Current status section (phase, progress, features)
+   - Tech stack if major dependencies added
+   - Deployment info if status changed
+7. Commit changes to git (optional)
+8. Provide summary and suggest next steps
 
 **What Claude infers**:
 - Completed tasks from "I just finished X" statements
@@ -124,9 +128,59 @@ When you say `"Update status"`, Claude will:
 - "Add to roadmap" → Added to roadmap
 - "Park that idea" → Added to roadmap
 
-**Post-MVP Prompt**: 
+**Post-MVP Prompt**:
 After Phase 3 completion, ask:
 "You've completed the MVP! You have [N] items in the roadmap. Would you like to review them and potentially plan Phase 4 for enhancements?"
+
+---
+
+## README Management
+
+**Status**: Active
+**Strategy**: Dual README approach
+
+### How It Works
+
+**Phase 0 - Initial Creation:**
+When planning is complete, Claude will:
+1. **Archive template README** - Rename `README.md` → `TEMPLATE-README.md`
+2. **Create project README** - New `README.md` with:
+   - Project name and overview (from `project-plan.md`)
+   - Tech stack summary (from `tech-stack.md`)
+   - Current status (from `build-status.md`)
+   - Setup/usage placeholders (to be filled as project develops)
+3. **Commit the change** - Part of Phase 0 completion
+
+**During Development:**
+README.md is updated via "Update status" command when:
+- Project status changes significantly (phase completions, major milestones)
+- Tech stack changes (new major dependencies)
+- Deployment status changes (going live, new URLs)
+- User requests: "Update README"
+
+### What Gets Updated
+
+**Auto-Updated Sections:**
+- **Current Status** - Synced from `build-status.md` (phase, progress, completed features)
+- **Tech Stack** - Major changes from `tech-stack.md`
+- **Last Updated** - Timestamp
+
+**Manual Sections:**
+- **Overview** - Created once from planning, updated manually if scope changes
+- **Setup Instructions** - Added when project is runnable
+- **Usage Guide** - Expanded as features complete
+- **Deployment** - Added when deployment configured
+
+### README Structure Reference
+
+See `README-STRUCTURE.md` for recommended sections and structure. Claude uses this as a guide when creating the initial project README.
+
+### Files in User's Repo
+
+After Phase 0 completion:
+- `README.md` - Project-specific documentation (auto-updated)
+- `TEMPLATE-README.md` - Template system documentation (reference only)
+- `README-STRUCTURE.md` - Structure guide (reference for adding sections)
 
 ---
 
@@ -203,6 +257,8 @@ When planning starts, Claude will work through:
 - [ ] Propose phase breakdown (typically 3-5 phases)
 - [ ] Create detailed phase plan files
 - [ ] Update build-status.md with phase structure
+- [ ] Archive template README as TEMPLATE-README.md
+- [ ] Create project-specific README.md with overview, tech stack, and status
 - [ ] Mark Phase 0 complete
 - [ ] Ask if ready to start Phase 1
 

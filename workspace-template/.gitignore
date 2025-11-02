@@ -1,0 +1,21 @@
+# Workspace-level session tracking (local only)
+.workspace/.session-log.md
+
+# Project status files (local only)
+.status
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Note: The following ARE tracked in git:
+# .workspace/CLAUDE.md - Workspace configuration
+# .workspace/README.md - Setup guide
+# .workspace/ROADMAP.md - Improvement tracking
+# .workspace/templates/ - Stable templates for new projects

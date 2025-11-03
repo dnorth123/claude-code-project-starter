@@ -44,7 +44,7 @@ fi
 
 # Copy workspace-template contents to workspace location
 echo -e "${YELLOW}Copying workspace structure...${NC}"
-rsync -av --exclude='setup-workspace.sh' --exclude='setup-project.sh' --exclude='.git' --exclude='README.md' --exclude='WORKSPACE-GUIDE.md' --exclude='project-template' workspace-template/ "$workspace_location/"
+rsync -av --exclude='setup-workspace.sh' --exclude='setup-project.sh' --exclude='.git' --exclude='project-template' workspace-template/ "$workspace_location/"
 
 # Personalize paths in CLAUDE.md and README.md
 echo -e "${YELLOW}Personalizing configuration files...${NC}"

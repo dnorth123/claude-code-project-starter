@@ -45,6 +45,100 @@ Claude Code provides specialized agents for different types of tasks. These can 
 - **statusline-setup**: Use this agent to configure the user's Claude Code status line setting
 - **output-style-setup**: Use this agent to create a Claude Code output style
 
+---
+
+## How to Use Agents
+
+### Invoking Agents
+
+**Natural language (recommended):**
+```
+"I need a full-stack developer to help build authentication"
+"Can a debug specialist help me with this error?"
+"I need a UX designer to design the dashboard"
+```
+
+Claude will automatically route to the appropriate agent.
+
+**Explicit invocation:**
+Use the Task tool with specific subagent_type parameter.
+
+### Recommended Agent Workflows
+
+**For New Features:**
+1. Product Strategist → Define requirements
+2. Full-Stack Developer → Implement
+3. Test Generator → Create tests
+4. Code Reviewer → Review quality
+
+**For Launch:**
+1. Launch Orchestrator → Plan 7-day sprint
+2. Content Strategist → Create marketing copy
+3. DevOps Engineer → Setup deployment
+
+**For Troubleshooting:**
+1. Debug Specialist → Identify root cause
+2. Security Reviewer → Check if security-related
+3. Full-Stack Developer → Implement fix
+4. Test Generator → Prevent regression
+
+**For UI/UX Work:**
+1. UX Researcher → User insights
+2. UX Designer → Design solution
+3. Full-Stack Developer → Implement
+4. UX Researcher → Validate with users
+
+**For Pre-Launch:**
+1. Code Reviewer → Architecture review
+2. Security Reviewer → Security audit
+3. DevOps Engineer → Deployment setup
+4. Test Generator → Full coverage check
+5. Content Strategist → Launch messaging
+6. Launch Orchestrator → 7-day launch plan
+
+**Most Used Agents:**
+- **Full-Stack Developer** - Primary development partner (use 80% of the time)
+- **Debug Specialist** - When stuck on errors
+- **Code Reviewer** - Before merging, phase completions
+- **Test Generator** - Quality assurance
+
+**Quick Reference:** See `AGENT-QUICK-REF.md` for complete usage guide
+
+---
+
+## Custom Workspace Commands
+
+These custom commands automate common workflows:
+
+### `/setup-template` (Project Template Only)
+**Location:** `project-template/.claude/commands/setup-template.md`
+**Use when:** Starting a new project from template
+**What it does:** Guides through Phase 0 planning, creates phase plans, updates BUILD-STATUS
+
+### `/update-status`
+**Location:** `.workspace/commands/update-status.md`
+**Use when:** After completing tasks, before context clear, end of session
+**What it does:** Analyzes session, updates .session-log.md, project .status, BUILD-STATUS.md, commits changes
+
+### `/check-context`
+**Location:** `.workspace/commands/check-context.md`
+**Use when:** Want to see token usage, before starting major work, during long sessions
+**What it does:** Reports token usage, health status (🟢🟡🟠🔴), provides clear recommendations
+
+### `/workspace-status`
+**Location:** `.workspace/commands/workspace-status.md`
+**Use when:** Starting work, switching projects, checking what's active
+**What it does:** Shows recent projects, loads most recent BUILD-STATUS, suggests what to work on
+
+### `/capture-roadmap-item` (Passive - Auto-runs)
+**Location:** `project-template/.claude/commands/capture-roadmap-item.md`
+**Triggers:** "Save for v2", "Out of scope", "Add to roadmap", etc.
+**What it does:** Automatically captures deferred ideas to docs/project/roadmap.md
+
+**Usage:** These commands work via natural language or slash command syntax
+
+---
+
 ## MCP Servers
 
 ### Brave Search
@@ -116,13 +210,17 @@ Which would you like to work on?
 3. Ready to continue work immediately
 
 ### Context Monitoring
-**Active tracking** with automatic alerts:
-- 🟢 Green (< 70% / 140K tokens): Continue normally
-- 🟡 Yellow (70-85% / 140-170K): "Context at 70%, recommend clearing after current task"
-- 🟠 Orange (85-95% / 170-190K): "Context at 85%, should clear soon"
-- 🔴 Red (> 95% / 190K+): "Context at 95%, please clear now"
+**Active tracking** with automatic alerts using health zones:
+- 🟢 Green (< 70%) | 🟡 Yellow (70-85%) | 🟠 Orange (85-95%) | 🔴 Red (> 95%)
 
-**Manual check**: "Check context" - Get current usage and recommendation
+**Manual check:** Say "Check context" or use `/check-context` command
+
+**Detailed thresholds:** See `CONTEXT-THRESHOLDS.md` for complete guidelines
+
+**Clear workflow:**
+1. "Update status" - saves all progress
+2. `/clear` - resets context
+3. "Check the build status" - loads ~4K tokens, ready to continue
 
 ### Status Updates
 **Command**: "Update status"

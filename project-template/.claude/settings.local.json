@@ -32,7 +32,8 @@
       "Bash(cp:*)",
       "Bash(mv:*)",
       "Bash(chmod:*)",
-      "Bash(docker:*)"
+      "Bash(docker:*)",
+      "Bash(gh:*)"
     ],
     "deny": [
       "Bash(rm -rf /:*)"

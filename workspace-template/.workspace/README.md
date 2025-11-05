@@ -132,12 +132,15 @@ Check context
 
 ## Context Management
 
-### Automatic Alerts
+### Health Zones
 
-- 🟢 **Green** (< 70% / < 140K tokens): Continue normally
-- 🟡 **Yellow** (70-85% / 140-170K): "Recommend clearing after current task"
-- 🟠 **Orange** (85-95% / 170-190K): "Should clear soon"
-- 🔴 **Red** (> 95% / > 190K): "Please clear now"
+**Quick reference:**
+- 🟢 **Green** (< 70%): Continue normally
+- 🟡 **Yellow** (70-85%): Recommend clearing after current task
+- 🟠 **Orange** (85-95%): Should clear soon
+- 🔴 **Red** (> 95%): Please clear now
+
+**Detailed guidelines:** See `CONTEXT-THRESHOLDS.md` for complete context management documentation
 
 ### Clearing Context
 
@@ -301,15 +304,24 @@ This `.workspace/` folder can be packaged as a template for others:
 
 ## Files Reference
 
-### Configuration
+### Workspace Configuration
 - `.workspace/CLAUDE.md` - Commands, preferences, agents, MCP servers
+- `.workspace/AGENT-QUICK-REF.md` - Quick reference guide for all agents
+- `.workspace/CONTEXT-THRESHOLDS.md` - Complete context management guidelines
 - `.workspace/.session-log.md` - Session tracking
 - `.gitignore` - Excludes .status and .session-log.md from git
 
-### Per-Project
+### Custom Commands
+- `.workspace/commands/update-status.md` - Status update automation
+- `.workspace/commands/check-context.md` - Context health monitoring
+- `.workspace/commands/workspace-status.md` - Multi-project navigation
+
+### Per-Project Files
 - `.status` - Quick status (context-aware)
 - `BUILD-STATUS.md` - Optional full tracking
-- `CLAUDE.md` - Optional project-specific instructions
+- `.claude/claude.md` - Optional project-specific instructions
+- `.claude/commands/setup-template.md` - Template setup agent
+- `.claude/commands/capture-roadmap-item.md` - Roadmap curation
 
 ---
 

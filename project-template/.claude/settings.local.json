@@ -3,10 +3,11 @@
     "allow": [
       "Bash(git fetch:*)",
       "Bash(git add:*)",
-      "Bash(git commit -m \"$(cat <<''EOF''\nUpdate README.md with improved clarity and instructions\n\n- Change title to \"Claude Code Project Starter Template\"\n- Remove demo gif section (not yet created)\n- Emphasize template is for beginners and advanced users\n- Expand Initial Setup section with detailed guidance\n- Add Plan Mode instruction (Shift+Tab)\n- Improve formatting and readability throughout\n- Reformat tables for better presentation\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(git remote set-url:*)",
-      "Bash(git commit:*)"
+      "Task(*)",
+      "SlashCommand(*)"
     ]
   },
   "enableAllProjectMcpServers": true,

@@ -38,6 +38,33 @@ This system is designed to use tokens efficiently:
 
 ---
 
+## Claude Code Permissions
+
+**Configuration**: `.claude/settings.local.json`
+
+This template includes **aggressive auto-approval settings** designed for trusted development environments. Claude can perform common operations automatically without requesting permission:
+
+- ✅ Reading, writing, and editing files
+- ✅ Git operations (commit, push, status, diff, etc.)
+- ✅ Package management (npm, yarn, pnpm)
+- ✅ Running tests and builds
+- ✅ Docker commands
+- ✅ GitHub CLI operations
+
+**Safety**: Dangerous operations (like `rm -rf /`) are explicitly blocked.
+
+**⚠️ Important**: These aggressive settings are ideal for personal projects and trusted repositories. For production or shared environments, consider customizing the permissions.
+
+**📖 Full Guide**: See `.claude/SETTINGS-GUIDE.md` for:
+- Detailed permission explanations
+- Security implications
+- Customization examples for different scenarios
+- Risk levels and best practices
+
+**Customize**: Edit `.claude/settings.local.json` to adjust permissions based on your comfort level.
+
+---
+
 ## Tips for Success
 
 ### 1. Update Status Regularly

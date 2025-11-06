@@ -381,6 +381,23 @@ Work on project-c
 
 **Rule of thumb**: Spend at least 30-60 minutes per project before switching.
 
+### Claude Code Permissions
+
+Projects created from the workspace template include **aggressive auto-approval settings** for efficient workflows.
+
+**What's auto-approved:**
+- All file operations, git commands, package managers, tests, builds, Docker, and GitHub CLI
+
+**Why this matters in workspaces:**
+- ⚡ Faster context switching between projects
+- 🚀 No interruptions for routine operations across multiple repos
+- 🎯 Consistent experience across all workspace projects
+
+**⚠️ For production or client projects:**
+Consider customizing `.claude/settings.local.json` in those specific projects for more conservative permissions.
+
+**📖 Learn more**: See `project-template/.claude/SETTINGS-GUIDE.md` in the workspace template for detailed documentation on permissions, security implications, and customization options.
+
 ---
 
 ## Troubleshooting

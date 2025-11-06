@@ -339,6 +339,38 @@ When context gets full:
 
 Resume cost: Only 2-4K tokens!
 
+### ⚙️ Pre-Configured Auto-Approvals
+
+Both modes include **aggressive auto-approval settings** for efficient workflows in trusted repositories.
+
+**What's Auto-Approved:**
+- ✅ All file operations (Read, Write, Edit, Glob, Grep)
+- ✅ Complete git workflow (status, diff, commit, push, branch, checkout)
+- ✅ Package managers (npm, yarn, pnpm)
+- ✅ Python/Node execution and testing
+- ✅ File system operations (ls, mkdir, cp, mv, chmod, etc.)
+- ✅ Docker commands (build, run, compose, logs, etc.)
+- ✅ GitHub CLI (gh) for PR/issue management
+
+**Safety Measures:**
+- 🛡️ Dangerous commands (like `rm -rf /`) are explicitly denied
+- 🛡️ Git force push requires approval (via git protocol)
+
+**Why This Matters:**
+- ⚡ Eliminates approval prompts for common development operations
+- 🚀 Significantly speeds up Claude Code workflows
+- 🎯 Ideal for personal projects and trusted development environments
+
+**⚠️ Important**: These aggressive settings are designed for trusted repositories. For production systems or shared environments, customize the permissions.
+
+**Customization:**
+Each project's `.claude/settings.local.json` can be modified for different risk tolerances. See `project-template/.claude/SETTINGS-GUIDE.md` for:
+- Detailed explanation of each permission and its implications
+- Security risk levels (Very Low → High)
+- Configuration examples (conservative, moderate, aggressive)
+- Common scenarios (open source, personal, learning, production)
+- Troubleshooting and best practices
+
 ---
 
 ## 🎓 Getting Help

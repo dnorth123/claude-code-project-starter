@@ -339,6 +339,47 @@ When context gets full:
 
 Resume cost: Only 2-4K tokens!
 
+### ⚙️ Configurable Auto-Approval Permissions
+
+Both modes include **aggressive auto-approval settings by default**, but you can easily customize the permission level for each project.
+
+**🎛️ Choose Your Permission Level**
+
+When you start a new project, run:
+```
+/setup-permissions
+```
+
+Claude will help you choose from 4 presets:
+- 🔵 **Aggressive** (default): Maximum speed - auto-approve everything
+- 🟢 **Moderate**: Balanced - auto-approve files/git/packages, ask for execution
+- 🟡 **Conservative**: More oversight - ask for most changes
+- 🔴 **Maximum Security**: Maximum control - approve nearly everything
+
+**What's in Aggressive (Default):**
+- ✅ All file operations (Read, Write, Edit, Glob, Grep)
+- ✅ Complete git workflow (status, diff, commit, push, branch, checkout)
+- ✅ Package managers (npm, yarn, pnpm)
+- ✅ Python/Node execution and testing
+- ✅ File system operations (ls, mkdir, cp, mv, chmod, etc.)
+- ✅ Docker commands (build, run, compose, logs, etc.)
+- ✅ GitHub CLI (gh) for PR/issue management
+
+**Safety Measures:**
+- 🛡️ Dangerous commands (like `rm -rf /`) are explicitly denied
+- 🛡️ Git force push requires approval (via git protocol)
+
+**Why This Matters:**
+- ⚡ Eliminates approval prompts for common development operations
+- 🚀 Significantly speeds up Claude Code workflows
+- 🎯 Ideal for personal projects and trusted development environments
+- 🔧 Easy to adjust for different project types (personal, client, production)
+
+**Customization:**
+- **Quick setup**: Run `/setup-permissions` in any project to reconfigure
+- **Detailed guide**: See `project-template/.claude/SETTINGS-GUIDE.md` for comprehensive documentation
+- **Manual edit**: Edit `.claude/settings.local.json` directly for fine-tuning
+
 ---
 
 ## 🎓 Getting Help

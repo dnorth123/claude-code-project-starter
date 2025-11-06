@@ -38,6 +38,47 @@ This system is designed to use tokens efficiently:
 
 ---
 
+## Claude Code Permissions
+
+**Configuration**: `.claude/settings.local.json`
+
+This template uses **aggressive auto-approval settings** by default, designed for trusted development environments.
+
+**⚙️ Choose Your Permission Level**
+
+When you first start Claude Code, run:
+```
+/setup-permissions
+```
+
+Claude will:
+- Explain the current aggressive settings (pros/cons)
+- Show 4 preset options with comparison
+- Help you select the right level for your project
+- Apply your choice instantly
+
+**Available presets:**
+- 🔵 **Aggressive** (default): Everything auto-approved - fastest workflow
+- 🟢 **Moderate**: Files/git/packages yes, execution asks - balanced
+- 🟡 **Conservative**: Most operations ask - more oversight
+- 🔴 **Maximum Security**: Nearly everything asks - maximum control
+
+**Currently enabled (Aggressive):**
+- ✅ Reading, writing, and editing files
+- ✅ Git operations (commit, push, status, diff, etc.)
+- ✅ Package management (npm, yarn, pnpm)
+- ✅ Running tests and builds
+- ✅ Docker commands
+- ✅ GitHub CLI operations
+
+**Safety**: Dangerous operations (like `rm -rf /`) are explicitly blocked.
+
+**⚠️ Recommendation**: Personal/trusted repos → Keep Aggressive. Production/client work → Choose Conservative or Maximum Security.
+
+**📖 Learn more**: See `.claude/SETTINGS-GUIDE.md` for detailed permission documentation and risk levels.
+
+---
+
 ## Tips for Success
 
 ### 1. Update Status Regularly

@@ -1,0 +1,52 @@
+{
+  "_description": "MODERATE preset - For work projects and learning. Auto-approves file operations, git, and package managers. Asks before executing code.",
+  "_use_when": "Work projects, team repositories, learning environments, collaborative development",
+  "_pros": "Balanced speed and safety, good for most professional work",
+  "_cons": "Interruptions for test/build execution, not as fast as aggressive",
+  "permissions": {
+    "allow": [
+      "Bash(git fetch:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git branch:*)",
+      "Bash(git checkout:*)",
+      "Task(*)",
+      "SlashCommand(*)",
+      "Read(*)",
+      "Write(*)",
+      "Edit(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "Bash(npm:*)",
+      "Bash(yarn:*)",
+      "Bash(pnpm:*)",
+      "Bash(ls:*)",
+      "Bash(pwd:*)",
+      "Bash(echo:*)",
+      "Bash(cat:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(chmod:*)"
+    ],
+    "ask": [
+      "Bash(python:*)",
+      "Bash(pytest:*)",
+      "Bash(node:*)",
+      "Bash(docker:*)",
+      "Bash(gh:*)"
+    ],
+    "deny": [
+      "Bash(rm -rf /:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "brave-search"
+  ]
+}

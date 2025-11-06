@@ -381,6 +381,36 @@ Work on project-c
 
 **Rule of thumb**: Spend at least 30-60 minutes per project before switching.
 
+### Claude Code Permissions
+
+Projects created from the workspace template use **aggressive auto-approval settings** by default for maximum workflow speed.
+
+**⚙️ Customize per project:**
+
+Different projects need different permission levels. Run this in any project:
+```
+cd projects/client/important-client
+claude
+/setup-permissions
+```
+
+Choose from 4 presets:
+- 🔵 **Aggressive**: Personal projects - maximum speed
+- 🟢 **Moderate**: Work projects - balanced approach
+- 🟡 **Conservative**: Client work - more oversight
+- 🔴 **Maximum Security**: Production - maximum control
+
+**Why this matters in workspaces:**
+- ⚡ Faster context switching between projects
+- 🚀 No interruptions for routine operations (with Aggressive)
+- 🎯 Different security levels for different project types
+- 🔧 Personal projects fast, client projects safe
+
+**⚙️ Set workspace-wide default:**
+Edit `.workspace/templates/project-starter/.claude/settings.local.json` to change the default preset for all new projects.
+
+**📖 Learn more**: See `project-template/.claude/SETTINGS-GUIDE.md` for detailed documentation, or run `/setup-permissions` for interactive configuration.
+
 ---
 
 ## Troubleshooting

@@ -1,0 +1,50 @@
+{
+  "_description": "CONSERVATIVE preset - For open source and client work. Auto-approves reads and basic git. Asks before writes, commits, and execution.",
+  "_use_when": "Open source contributions, client projects, shared repositories, public repos",
+  "_pros": "High oversight, review changes before they happen, safer for public work",
+  "_cons": "Slower workflow, many approval prompts, less efficient for rapid development",
+  "permissions": {
+    "allow": [
+      "Read(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git fetch:*)",
+      "Bash(git branch:*)",
+      "Bash(ls:*)",
+      "Bash(pwd:*)",
+      "Bash(cat:*)",
+      "Task(*)",
+      "SlashCommand(*)"
+    ],
+    "ask": [
+      "Write(*)",
+      "Edit(*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git checkout:*)",
+      "Bash(npm:*)",
+      "Bash(yarn:*)",
+      "Bash(pnpm:*)",
+      "Bash(python:*)",
+      "Bash(pytest:*)",
+      "Bash(node:*)",
+      "Bash(docker:*)",
+      "Bash(gh:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(chmod:*)"
+    ],
+    "deny": [
+      "Bash(rm -rf /:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "brave-search"
+  ]
+}

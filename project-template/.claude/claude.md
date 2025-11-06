@@ -39,6 +39,41 @@ Initial setup - Help plan and initialize this project:
 
 ---
 
+## Tool Auto-Approval Configuration
+
+**Status**: Aggressive (optimized for trusted repos)
+**Configuration File**: `.claude/settings.local.json`
+
+This template uses **aggressive auto-approval settings** by default for maximum workflow speed.
+
+**⚙️ Want different settings?** Run `/setup-permissions` to:
+- See what aggressive means (pros/cons)
+- Switch to Conservative, Moderate, or Maximum Security
+- Get preset recommendations for your project type
+- Takes 2 minutes, can be changed anytime
+
+**Currently auto-approved operations:**
+- ✅ All file operations (Read, Write, Edit, Glob, Grep)
+- ✅ Complete git workflow (status, diff, commit, push, branch, checkout)
+- ✅ Package managers (npm, yarn, pnpm)
+- ✅ Python/Node execution and testing
+- ✅ File system operations (ls, mkdir, cp, mv, chmod, etc.)
+- ✅ Docker commands (build, run, compose, logs, etc.)
+- ✅ GitHub CLI (gh) for PR/issue management
+
+**Safety Measures:**
+- 🛡️ Dangerous commands blocked (e.g., `rm -rf /`)
+- 🛡️ Git force push requires approval
+
+**⚠️ Important**: These settings are designed for **trusted repositories** where you're comfortable with Claude making changes. For production or shared repositories, review and customize the settings.
+
+**📖 Documentation**:
+- **Quick setup**: Run `/setup-permissions` for interactive configuration
+- **Detailed guide**: `.claude/SETTINGS-GUIDE.md` - Complete permission reference
+- **Manual edit**: `.claude/settings.local.json` - Direct file editing
+
+---
+
 ## Auto-Status Update System
 
 **Status**: Active  

@@ -8,13 +8,68 @@
 
 ## 📋 Table of Contents
 
-1. [Overview](#overview)
-2. [Permission System Basics](#permission-system-basics)
-3. [Auto-Approved Permissions Breakdown](#auto-approved-permissions-breakdown)
-4. [Security & Safety Measures](#security--safety-measures)
-5. [Customization Guide](#customization-guide)
-6. [Common Scenarios](#common-scenarios)
-7. [Troubleshooting](#troubleshooting)
+1. [Quick Start: Using Presets](#quick-start-using-presets) ⭐ New!
+2. [Overview](#overview)
+3. [Permission System Basics](#permission-system-basics)
+4. [Auto-Approved Permissions Breakdown](#auto-approved-permissions-breakdown)
+5. [Security & Safety Measures](#security--safety-measures)
+6. [Customization Guide](#customization-guide)
+7. [Common Scenarios](#common-scenarios)
+8. [Troubleshooting](#troubleshooting)
+
+---
+
+## Quick Start: Using Presets
+
+**New to permission configuration?** Use the preset system for easy setup!
+
+### 🎛️ Interactive Setup
+
+Run this command in Claude Code:
+
+```
+/setup-permissions
+```
+
+Claude will:
+1. Explain the current aggressive settings (pros/cons)
+2. Show you 4 preset options
+3. Help you choose the right one for your project
+4. Apply it instantly with smart merging of custom settings
+
+### 📦 Available Presets
+
+| Preset | Best For | Speed | Safety | What's Auto-Approved |
+|--------|----------|-------|--------|---------------------|
+| 🔵 **Aggressive** | Personal projects, trusted repos | ⭐⭐⭐⭐ Fastest | 🔒 Basic | Everything except dangerous operations |
+| 🟢 **Moderate** | Work projects, learning | ⭐⭐⭐ Medium | 🔒🔒 Medium | Files, git, packages (asks before execution) |
+| 🟡 **Conservative** | Open source, client work | ⭐⭐ Slow | 🔒🔒🔒 High | Reads, basic git (asks for writes/commits) |
+| 🔴 **Maximum Security** | Production, critical systems | ⭐ Slowest | 🔒🔒🔒🔒 Maximum | Only reads and git status |
+
+### 🚀 Quick Selection Guide
+
+**Choose based on your project type:**
+
+- **Personal side project?** → 🔵 Aggressive (maximum speed)
+- **Learning/tutorial?** → 🔵 Aggressive or 🟢 Moderate
+- **Work project?** → 🟢 Moderate
+- **Contributing to open source?** → 🟡 Conservative
+- **Client project?** → 🟡 Conservative or 🔴 Maximum Security
+- **Production system?** → 🔴 Maximum Security
+
+### 🔄 Easy to Change
+
+- Run `/setup-permissions` anytime to switch presets
+- Your custom permissions are preserved when merging
+- Changes take effect immediately
+
+### 📖 Want More Details?
+
+Continue reading for comprehensive documentation on:
+- What each permission actually does
+- Security implications and risk levels
+- Manual customization options
+- Troubleshooting permission issues
 
 ---
 
@@ -524,6 +579,51 @@ These operations are **NOT automatically blocked** and require vigilance:
 ---
 
 ## Customization Guide
+
+### Starting from a Preset (Recommended)
+
+The easiest way to customize permissions is to start with a preset that's close to your needs:
+
+**Step 1: Choose a base preset**
+```
+/setup-permissions
+```
+Select the preset closest to your requirements (Aggressive, Moderate, Conservative, or Maximum Security).
+
+**Step 2: Let it apply**
+The preset will be written to `.claude/settings.local.json` with smart merging of any custom permissions you've added.
+
+**Step 3: Fine-tune manually**
+Edit `.claude/settings.local.json` to add/remove specific permissions for your unique needs.
+
+**Step 4: Restart (if needed)**
+Changes take effect immediately in the current session. For new sessions, just start Claude Code normally.
+
+**Example: Start with Moderate, add Ruby support**
+
+After running `/setup-permissions` and selecting Moderate, edit `.claude/settings.local.json`:
+
+```json
+{
+  "permissions": {
+    "allow": [
+      // ... all moderate preset permissions ...
+      "Bash(ruby:*)",
+      "Bash(rails:*)",
+      "Bash(bundle:*)",
+      "Bash(rake:*)"
+    ]
+  }
+}
+```
+
+Now you have Moderate's balanced approach PLUS Ruby/Rails support.
+
+---
+
+### Manual Customization
+
+If you prefer to configure from scratch or need advanced control:
 
 ### Adding New Auto-Approvals
 

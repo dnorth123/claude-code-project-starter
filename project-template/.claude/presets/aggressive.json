@@ -1,0 +1,50 @@
+{
+  "_description": "AGGRESSIVE preset - For personal projects and trusted repos. Auto-approves all operations except dangerous commands. Maximum speed, requires trust.",
+  "_use_when": "Personal side projects, experiments, learning projects, trusted development environments",
+  "_pros": "Maximum speed, no interruptions, ideal for rapid prototyping",
+  "_cons": "Less oversight, requires trust, mistakes harder to catch before they happen",
+  "permissions": {
+    "allow": [
+      "Bash(git fetch:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git branch:*)",
+      "Bash(git checkout:*)",
+      "Task(*)",
+      "SlashCommand(*)",
+      "Read(*)",
+      "Write(*)",
+      "Edit(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "Bash(npm:*)",
+      "Bash(yarn:*)",
+      "Bash(pnpm:*)",
+      "Bash(python:*)",
+      "Bash(pytest:*)",
+      "Bash(node:*)",
+      "Bash(ls:*)",
+      "Bash(pwd:*)",
+      "Bash(echo:*)",
+      "Bash(cat:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(chmod:*)",
+      "Bash(docker:*)",
+      "Bash(gh:*)"
+    ],
+    "deny": [
+      "Bash(rm -rf /:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "brave-search"
+  ]
+}

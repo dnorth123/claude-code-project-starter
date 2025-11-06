@@ -1,0 +1,50 @@
+{
+  "_description": "MAXIMUM SECURITY preset - For production and critical systems. Auto-approves only reads and git status. Everything else requires approval.",
+  "_use_when": "Production systems, critical repositories, unfamiliar codebases, high-security environments",
+  "_pros": "Maximum control, review every change, highest safety level",
+  "_cons": "Slowest workflow, constant approval prompts, not suitable for active development",
+  "permissions": {
+    "allow": [
+      "Read(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(ls:*)",
+      "Bash(pwd:*)",
+      "Bash(cat:*)",
+      "Task(*)",
+      "SlashCommand(*)"
+    ],
+    "ask": [
+      "Write(*)",
+      "Edit(*)",
+      "Bash(git fetch:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git branch:*)",
+      "Bash(git checkout:*)",
+      "Bash(npm:*)",
+      "Bash(yarn:*)",
+      "Bash(pnpm:*)",
+      "Bash(python:*)",
+      "Bash(pytest:*)",
+      "Bash(node:*)",
+      "Bash(gh:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(chmod:*)"
+    ],
+    "deny": [
+      "Bash(rm:*)",
+      "Bash(docker:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "brave-search"
+  ]
+}

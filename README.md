@@ -339,11 +339,24 @@ When context gets full:
 
 Resume cost: Only 2-4K tokens!
 
-### ⚙️ Pre-Configured Auto-Approvals
+### ⚙️ Configurable Auto-Approval Permissions
 
-Both modes include **aggressive auto-approval settings** for efficient workflows in trusted repositories.
+Both modes include **aggressive auto-approval settings by default**, but you can easily customize the permission level for each project.
 
-**What's Auto-Approved:**
+**🎛️ Choose Your Permission Level**
+
+When you start a new project, run:
+```
+/setup-permissions
+```
+
+Claude will help you choose from 4 presets:
+- 🔵 **Aggressive** (default): Maximum speed - auto-approve everything
+- 🟢 **Moderate**: Balanced - auto-approve files/git/packages, ask for execution
+- 🟡 **Conservative**: More oversight - ask for most changes
+- 🔴 **Maximum Security**: Maximum control - approve nearly everything
+
+**What's in Aggressive (Default):**
 - ✅ All file operations (Read, Write, Edit, Glob, Grep)
 - ✅ Complete git workflow (status, diff, commit, push, branch, checkout)
 - ✅ Package managers (npm, yarn, pnpm)
@@ -360,16 +373,12 @@ Both modes include **aggressive auto-approval settings** for efficient workflows
 - ⚡ Eliminates approval prompts for common development operations
 - 🚀 Significantly speeds up Claude Code workflows
 - 🎯 Ideal for personal projects and trusted development environments
-
-**⚠️ Important**: These aggressive settings are designed for trusted repositories. For production systems or shared environments, customize the permissions.
+- 🔧 Easy to adjust for different project types (personal, client, production)
 
 **Customization:**
-Each project's `.claude/settings.local.json` can be modified for different risk tolerances. See `project-template/.claude/SETTINGS-GUIDE.md` for:
-- Detailed explanation of each permission and its implications
-- Security risk levels (Very Low → High)
-- Configuration examples (conservative, moderate, aggressive)
-- Common scenarios (open source, personal, learning, production)
-- Troubleshooting and best practices
+- **Quick setup**: Run `/setup-permissions` in any project to reconfigure
+- **Detailed guide**: See `project-template/.claude/SETTINGS-GUIDE.md` for comprehensive documentation
+- **Manual edit**: Edit `.claude/settings.local.json` directly for fine-tuning
 
 ---
 

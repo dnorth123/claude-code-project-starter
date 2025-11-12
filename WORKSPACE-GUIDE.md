@@ -12,6 +12,7 @@ This guide covers advanced workspace usage, multi-project workflows, and best pr
 - [Understanding Workspaces](#understanding-workspaces)
 - [Daily Workflow](#daily-workflow)
 - [Multi-Project Management](#multi-project-management)
+  - [Adding Existing Projects](#adding-existing-projects-to-your-workspace)
 - [Context Management](#context-management)
 - [Template Development](#template-development)
 - [Best Practices](#best-practices)
@@ -128,6 +129,78 @@ projects/
 mkdir projects/open-source
 mkdir projects/archived
 ```
+
+### Adding Existing Projects to Your Workspace
+
+**Have existing Claude Code projects?** You can bring them into your workspace and adopt the template's features.
+
+#### Option 1: Move Project Into Workspace
+
+Simply move your existing project into the appropriate category:
+
+```bash
+# Move existing project into workspace
+mv ~/my-existing-project ~/Projects/projects/personal/my-existing-project
+cd ~/Projects/projects/personal/my-existing-project
+```
+
+Now integrate the template features:
+
+```bash
+# Run integration wizard from workspace root
+cd ~/Projects
+./integrate-project.sh
+# (Script will guide you through integration)
+```
+
+**Or** manually integrate (see [INTEGRATE-EXISTING.md](../INTEGRATE-EXISTING.md) for details):
+
+```bash
+# Copy just status tracking (minimal integration)
+cp .workspace/templates/project-starter/docs/project/build-status.md \
+   projects/personal/my-project/docs/project/build-status.md
+
+# Copy full documentation structure (standard integration)
+cp -r .workspace/templates/project-starter/docs/project \
+   projects/personal/my-project/docs/
+
+# Copy commands
+cp .workspace/templates/project-starter/.claude/commands/capture-roadmap-item.md \
+   projects/personal/my-project/.claude/commands/
+```
+
+#### Option 2: Keep Project External, Link Status
+
+For projects that need to stay in their current location:
+
+```bash
+# Create symlink from workspace
+ln -s ~/my-external-project ~/Projects/projects/personal/my-project
+
+# Or just add a .status reference file
+echo "Status: External project at ~/my-external-project | $(date +%Y-%m-%d)" \
+  > ~/Projects/projects/personal/my-project.status
+```
+
+#### Option 3: Integrate Template Features Only
+
+Keep your project where it is, just adopt template features:
+
+```bash
+cd ~/my-existing-project
+
+# Use the integration guide
+# Path to your cloned template
+TEMPLATE=~/Projects/claude-code-project-starter
+$TEMPLATE/integrate-project.sh
+```
+
+**See full integration guide:** [INTEGRATE-EXISTING.md](../INTEGRATE-EXISTING.md)
+
+**Integration levels:**
+- **Minimal** (15-30 min): Status tracking + context management
+- **Standard** (1-2 hours): Full documentation structure
+- **Full** (2-4 hours): Complete template adoption
 
 ### Project Status Files
 

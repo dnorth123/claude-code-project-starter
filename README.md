@@ -9,6 +9,36 @@
 
 ---
 
+## 📦 Already Have a Claude Code Project?
+
+**You can integrate this template into your existing project!**
+
+If you're already working on a Claude Code project and want to adopt this template's features (automatic status tracking, context management, structured documentation), we've got you covered.
+
+👉 **[Integration Guide: INTEGRATE-EXISTING.md](INTEGRATE-EXISTING.md)**
+
+**Quick Start for Existing Projects:**
+```bash
+# In your existing project directory
+cd /path/to/your/existing-project
+
+# Run the integration wizard
+/path/to/claude-code-project-starter/integrate-project.sh
+```
+
+**What you'll gain:**
+- ✅ Automatic status tracking (build-status.md)
+- ✅ Intelligent context management (reduce token usage by 70%+)
+- ✅ Structured documentation that stays current
+- ✅ Session resume with only ~4K tokens
+- ✅ Permission preset system for faster approvals
+
+**Integration time:** 15 minutes (minimal) to 2 hours (full)
+
+[Read the full integration guide →](INTEGRATE-EXISTING.md)
+
+---
+
 ## 🎯 Which Mode Is Right for You?
 
 ### 🔷 Single Project Mode

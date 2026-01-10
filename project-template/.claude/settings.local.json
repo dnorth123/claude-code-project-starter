@@ -33,10 +33,24 @@
       "Bash(mv:*)",
       "Bash(chmod:*)",
       "Bash(docker:*)",
-      "Bash(gh:*)"
+      "Bash(gh:*)",
+      "Bash(bash .claude/hooks/*)"
     ],
     "deny": [
       "Bash(rm -rf /:*)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/auto/session-start.sh",
+            "timeout": 10
+          }
+        ]
+      }
     ]
   },
   "enableAllProjectMcpServers": true,

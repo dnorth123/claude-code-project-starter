@@ -3,483 +3,357 @@
 [![Use this template](https://img.shields.io/badge/Use%20this-template-blue?style=for-the-badge)](https://github.com/dnorth123/claude-code-project-starter/generate)
 [![Claude Code Compatible](https://img.shields.io/badge/Claude%20Code-Compatible-orange?style=for-the-badge)](https://claude.ai)
 [![MIT License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-v2.0.0-purple?style=for-the-badge)](https://github.com/dnorth123/claude-code-project-starter/releases)
+[![Version](https://img.shields.io/badge/Version-v3.0.0-purple?style=for-the-badge)](https://github.com/dnorth123/claude-code-project-starter/releases)
 
-**Two powerful modes in one template**: Build a single project with automatic status tracking, OR manage multiple projects with intelligent workspace organization. Choose the approach that fits your workflow.
+**An intelligent development companion** that maximizes Claude Code's latest capabilities. Dynamic model recommendations, real sub-agents, automated hooks, and structured workflows - all designed for personal projects that can scale to professional quality.
 
 ---
 
-## 📦 Already Have a Claude Code Project?
+## What's New in v3.0.0
 
-**You can integrate this template into your existing project!**
+### Dynamic Model Recommendations
+Claude analyzes every task and recommends the optimal model with pros/cons:
+- **Opus 4.5**: Complex architecture, security audits, deep debugging
+- **Sonnet 4.5**: Day-to-day development, feature implementation
+- **Haiku 4.5**: Quick edits, git operations, status checks
 
-If you're already working on a Claude Code project and want to adopt this template's features (automatic status tracking, context management, structured documentation), we've got you covered.
+### Real Sub-Agent Integration
+Leverage Claude Code's Task tool for autonomous work:
+- **Explore Agent**: Fast codebase understanding
+- **Plan Agent**: Implementation strategy design
+- **Bash Agent**: Command execution (with background support)
+- **General-Purpose Agent**: Complex multi-step tasks
 
-👉 **[Integration Guide: INTEGRATE-EXISTING.md](INTEGRATE-EXISTING.md)**
+### Automated Hooks System
+- **Auto-run hooks**: Environment validation on session start
+- **Validated hooks**: Pre-commit linting, test runners (require confirmation)
 
-**Quick Start for Existing Projects:**
+### 8 Consolidated Role Personas
+Focused expertise perspectives (down from 17):
+- Full-Stack Developer, Debug Specialist, Code Reviewer, Security Reviewer
+- Test Engineer, DevOps Engineer, Product Strategist, UX Designer
+
+### Simplified Integration
+Two clear tiers for existing projects:
+- **Essential**: Model strategy, auto-hooks, sub-agents, personas
+- **Extended**: + Validated hooks, permission presets, advanced patterns
+
+---
+
+## Quick Start
+
+### New Project (5 minutes)
+
 ```bash
-# In your existing project directory
-cd /path/to/your/existing-project
-
-# Run the integration wizard
-/path/to/claude-code-project-starter/integrate-project.sh
-```
-
-**What you'll gain:**
-- ✅ Automatic status tracking (build-status.md)
-- ✅ Intelligent context management (reduce token usage by 70%+)
-- ✅ Structured documentation that stays current
-- ✅ Session resume with only ~4K tokens
-- ✅ Permission preset system for faster approvals
-
-**Integration time:** 15 minutes (minimal) to 2 hours (full)
-
-[Read the full integration guide →](INTEGRATE-EXISTING.md)
-
----
-
-## 🎯 Which Mode Is Right for You?
-
-### 🔷 Single Project Mode
-**Best for**: Building one focused project with Claude Code
-
-✨ You get:
-- Structured documentation (BUILD-STATUS.md, phases, roadmap)
-- Automatic status updates via `"Update status"` command
-- Intelligent context management with proactive alerts
-- Phase-based development approach
-- Token-efficient design (80-85% context for coding)
-- Smart resume after breaks
-
-👉 **Setup time**: 2 minutes
-👉 **Perfect for**: Side projects, learning projects, prototypes, tools
-
-[Jump to Single Project Setup →](#-single-project-mode-setup)
-
----
-
-### 🔶 Workspace Mode
-**Best for**: Juggling multiple projects with Claude Code
-
-✨ You get:
-- All Single Project Mode features **PLUS**:
-- Multi-project status tracking across all your work
-- Cross-project session logging
-- Template management system
-- Organized project categories (personal, work, client)
-- Single command to check status of all projects
-- Workspace-level context management
-
-👉 **Setup time**: 3 minutes
-👉 **Perfect for**: Developers managing 3-10+ projects, portfolio work, multi-client work
-
-[Jump to Workspace Mode Setup →](#-workspace-mode-setup)
-
----
-
-## 📊 Feature Comparison
-
-| Feature | Single Project | Workspace |
-|---------|----------------|-----------|
-| **AUTO status updates** | ✅ | ✅ |
-| **Context management** | ✅ Per-project | ✅ Workspace-wide |
-| **Phase-based development** | ✅ | ✅ (per project) |
-| **Smart resume** | ✅ | ✅ |
-| **Multi-project tracking** | ❌ | ✅ |
-| **Session logging** | ✅ Per-project | ✅ Cross-project |
-| **Template system** | ❌ | ✅ |
-| **Project categories** | ❌ | ✅ |
-| **Token overhead** | ~4K (2%) | ~4K (2%) |
-
----
-
-## 🚀 Single Project Mode Setup
-
-Perfect when you want to focus on building one thing.
-
-### Step 1: Create Your Project
-
-**Option A: GitHub CLI (Recommended)**
-```bash
-gh repo create my-awesome-project --template dnorth123/claude-code-project-starter --private --clone
-cd my-awesome-project
-```
-
-**Option B: GitHub Web**
-1. Click ["Use this template"](https://github.com/dnorth123/claude-code-project-starter/generate)
-2. Name your repository
-3. Clone it locally
-
-**Option C: Direct Clone**
-```bash
+# Clone the template
 git clone https://github.com/dnorth123/claude-code-project-starter.git my-project
 cd my-project
-rm -rf .git && git init
-```
 
-### Step 2: Run Setup Wizard
-
-```bash
+# Run setup
 ./setup-project.sh
+
+# Start Claude Code
+claude
 ```
 
-The wizard will:
-- ✅ Copy project template files to your directory
-- ✅ Initialize BUILD-STATUS.md with your project name
-- ✅ Create initial documentation structure
-- ✅ Set up git repository
-- ✅ Create first commit
-- ✅ Clean up workspace files
+Then say: `"Check the docs/project/ folder and help me get started"`
 
-### Step 3: Start Building
+### Existing Project (15-30 minutes)
 
 ```bash
-claude  # Start Claude Code
+# Essential tier (recommended)
+./integrate-project.sh /path/to/your-project
+
+# Extended tier (for complex/team projects)
+./integrate-project.sh /path/to/your-project --extended
 ```
 
-Then say:
-```
-Check the docs/project/ folder and help me get started
-```
-
-Claude will guide you through planning and building your project!
-
-### 📖 Single Project Commands
-
-| Command | What It Does |
-|---------|--------------|
-| `"Check the build status and tell me where we are at"` | Resume work, see current phase & next tasks |
-| `"Update status"` | Auto-update all documentation with progress |
-| `"Check context"` | See token usage and get recommendations |
-| `"Phase [N] complete"` | Mark phase done, update docs, get next steps |
+See [INTEGRATE-EXISTING.md](INTEGRATE-EXISTING.md) for details.
 
 ---
 
-## 🏢 Workspace Mode Setup
+## Core Features
 
-Perfect when you're juggling multiple projects.
+### Model Recommendations
 
-### Step 1: Create Workspace Repository
+Every task gets an intelligent recommendation:
 
-**Option A: GitHub CLI (Recommended)**
-```bash
-gh repo create my-workspace --template dnorth123/claude-code-project-starter --private --clone
-cd my-workspace
+```
+Model Recommendation: Sonnet 4.5
+
+Task: Implement user authentication
+
+Pros:
+- Optimal balance for feature implementation
+- Handles multi-file changes efficiently
+
+Cons:
+- May need Opus for security architecture decisions
+
+Alternative: Use Opus 4.5 if security-critical
 ```
 
-**Option B: GitHub Web**
-1. Click ["Use this template"](https://github.com/dnorth123/claude-code-project-starter/generate)
-2. Name it something like "coding-workspace" or "dev-projects"
-3. Clone it locally
+**Override anytime**: "Use Opus for this" or "Quick mode" (Haiku)
 
-**Option C: Direct Clone**
-```bash
-git clone https://github.com/dnorth123/claude-code-project-starter.git my-workspace
-cd my-workspace
-rm -rf .git && git init
+### Sub-Agent Workflows
+
+Use real autonomous agents for complex work:
+
+```
+Pattern: Explore -> Plan -> Execute
+
+1. "Explore the authentication system"     -> Explore Agent
+2. "Plan adding OAuth2 support"            -> Plan Agent
+3. "Implement the OAuth2 plan"             -> General-Purpose Agent
+4. "Run tests in background"               -> Bash Agent (background)
 ```
 
-### Step 2: Run Workspace Setup Wizard
+### Automated Session Start
+
+When you start Claude Code, the session-start hook automatically:
+- Checks git status and branch
+- Validates dependencies (Node, Python, etc.)
+- Shows project phase and progress
+- Prepares model recommendations
+
+### 8 Role Personas
+
+Invoke specialized perspectives:
+
+| Persona | Focus | Invoke With |
+|---------|-------|-------------|
+| **Full-Stack Developer** | Implementation | "Build...", "Implement..." |
+| **Debug Specialist** | Troubleshooting | "Help me debug...", "I'm getting this error..." |
+| **Code Reviewer** | Quality | "Review this code..." |
+| **Security Reviewer** | Vulnerabilities | "Security review..." (always uses Opus) |
+| **Test Engineer** | Testing | "Write tests for..." |
+| **DevOps Engineer** | Infrastructure | "Help me deploy..." |
+| **Product Strategist** | Requirements | "Help me define..." |
+| **UX Designer** | User experience | "Design the interface..." |
+
+---
+
+## Two Operating Modes
+
+### Single Project Mode
+
+**Best for**: Focused development on one project
+
+```bash
+./setup-project.sh /path/to/new-project
+```
+
+**You get**:
+- Automatic status tracking (build-status.md)
+- Phase-based development (0-4)
+- Smart session resume (~4K tokens)
+- All v3.0 features
+
+### Workspace Mode
+
+**Best for**: Managing 3-10+ concurrent projects
 
 ```bash
 ./setup-workspace.sh
 ```
 
-The wizard will:
-- ✅ Ask for your preferred workspace location (default: ~/Projects)
-- ✅ Copy workspace structure (.workspace/, projects/)
-- ✅ Personalize paths in configuration files
-- ✅ Initialize git repository
-- ✅ Create initial session log
-- ✅ Set up project template system
+**You get everything in Single Project, plus**:
+- Multi-project status dashboard
+- Cross-project session logging
+- Template management system
+- Project categories (personal/work/client)
 
-### Step 3: Navigate & Start
+---
 
-```bash
-cd ~/Projects  # Or your chosen location
-claude
-```
+## File Structure
 
-Then say:
-```
-What's the status of my projects
-```
-
-### 📖 Workspace Commands
-
-| Command | What It Does |
-|---------|--------------|
-| `"What's the status of my projects"` | See all projects, recent activity, context health |
-| `"Work on [project-name]"` | Switch to specific project, load its status |
-| `"Update status"` | Update session log, project status, BUILD-STATUS |
-| `"Check context"` | See workspace-wide token usage |
-
-### 🗂️ Workspace Structure
-
-After setup, your workspace looks like this:
+### Project Template
 
 ```
-~/Projects/                      # Or your chosen location
-├── .workspace/                  # Workspace configuration
-│   ├── CLAUDE.md               # Commands & preferences
-│   ├── README.md               # Workspace guide
-│   ├── ROADMAP.md              # Improvement tracking
-│   ├── .session-log.md         # Cross-project session log
-│   └── templates/              # Project templates
-│       └── project-starter/    # Full project template
-│
-├── projects/                    # Your projects
-│   ├── personal/               # Personal projects
-│   ├── work/                   # Work projects
-│   ├── client/                 # Client projects
-│   └── templates/              # Template development
-│
-├── sync-templates.sh            # Template sync utility
-└── .gitignore                   # Excludes temp files
-```
-
-### 🆕 Creating Projects in Workspace
-
-**From template:**
-```bash
-cd projects/personal
-cp -r ../../.workspace/templates/project-starter my-new-project
-cd my-new-project
-claude
-# Say: "Check the docs/project/ folder and help me get started"
-```
-
-**Simple project (no template):**
-```bash
-cd projects/personal
-mkdir quick-experiment
-cd quick-experiment
-echo "Status: Just started | $(date +%Y-%m-%d)" > .status
+your-project/
+├── .claude/
+│   ├── claude.md              # Session context
+│   ├── settings.local.json    # Permissions & hooks
+│   ├── MODEL-STRATEGY.md      # Model recommendations
+│   ├── SUBAGENTS.md           # Sub-agent patterns
+│   ├── PERSONAS.md            # 8 role personas
+│   └── hooks/
+│       ├── auto/              # Auto-run on session start
+│       │   └── session-start.sh
+│       └── validated/         # Require confirmation
+│           ├── pre-commit.sh
+│           └── test-runner.sh
+├── docs/project/
+│   ├── build-status.md        # Progress tracking
+│   ├── project-plan.md        # Requirements
+│   ├── tech-stack.md          # Technology decisions
+│   └── roadmap.md             # Future enhancements
+└── README.md
 ```
 
 ---
 
-## 💡 Key Features (Both Modes)
+## Commands Reference
 
-### 🤖 Automatic Status Updates
+### Status & Resume
 
-Just say `"Update status"` and Claude:
-- ✅ Analyzes your session and file changes
-- ✅ Updates documentation automatically
-- ✅ Logs progress and decisions
-- ✅ Shows summary and next steps
+| Command | Effect |
+|---------|--------|
+| `"Check the build status"` | Resume work, see current phase |
+| `"Update status"` | Auto-update all documentation |
+| `"Check context"` | See token usage |
 
-### 🎯 Intelligent Context Management
+### Model Selection
 
-Claude proactively manages token usage:
-- 🟢 **Green (<70%)**: Smooth sailing, keep coding
-- 🟡 **Yellow (70-85%)**: Note for later, finish current task
-- 🟠 **Orange (85-95%)**: Clear context after current task
-- 🔴 **Red (>95%)**: Clear immediately
+| Command | Effect |
+|---------|--------|
+| `"Use Opus for this"` | Force Opus 4.5 |
+| `"Quick mode"` / `"Use Haiku"` | Force Haiku 4.5 |
+| `"Standard"` | Use Sonnet 4.5 |
 
-### 📊 Phase-Based Development
+### Sub-Agents
 
-Break projects into manageable phases:
-- **Phase 0**: Planning (define scope, tech stack)
-- **Phase 1-3**: Implementation (build core features)
-- **Phase 4**: Polish & Deploy (testing, optimization)
+| Command | Sub-Agent |
+|---------|-----------|
+| `"Find all files related to..."` | Explore |
+| `"Plan the implementation of..."` | Plan |
+| `"Run tests in background"` | Bash (background) |
+| `"Implement this autonomously"` | General-Purpose |
 
-Each phase has clear goals, tasks, and git tags.
+### Validated Hooks
 
-### ⚡ Smart Session Resume
-
-Close Claude Code anytime. Resume with:
-```
-Check the build status and tell me where we are at
-```
-
-Claude loads ~4K tokens (2%) but knows your full project state!
+| Command | Effect |
+|---------|--------|
+| `"Run pre-commit checks"` | Lint/format (may modify files) |
+| `"Run the test suite"` | Execute tests |
 
 ---
 
-## 🎨 Perfect For
+## Context Management
 
-### Single Project Mode
-- ✨ Weekend side projects you actually want to finish
-- 📚 Learning new frameworks/technologies
-- 🔬 Quick prototypes and proof-of-concepts
-- 🛠️ Personal tools and utilities
-- 🧪 Technical experiments
+### Token Thresholds
 
-### Workspace Mode
-- 💼 Managing multiple client projects
-- 🎯 Portfolio with 5-10+ projects
-- 🔄 Switching between work and personal projects
-- 📦 Template development and reuse
-- 🏢 Freelance work with multiple active contracts
-
----
-
-## 📖 Documentation
-
-### For Single Project Users
-- **BUILD STATUS**: `docs/project/build-status.md` - Your project's command center
-- **Setup Guide**: `Setup.md` - First-time setup instructions
-- **Enhancements**: `ENHANCEMENT-SETUP.md` - Adding features after MVP
-
-### For Workspace Users
-- **Workspace Guide**: `.workspace/README.md` - Comprehensive workspace usage
-- **Commands Reference**: `.workspace/CLAUDE.md` - All commands and agents
-- **Roadmap**: `.workspace/ROADMAP.md` - Workspace improvement tracking
-- **Project Template**: `.workspace/templates/project-starter/` - Full project template docs
-
----
-
-## 🔧 Advanced Features
-
-### Token Budget Breakdown
-
-**Single Project:**
-- BUILD-STATUS.md: ~3K tokens (1.5%)
-- Planning docs: ~3K tokens (1.5%)
-- **Total overhead**: ~6K tokens (3%)
-- **Available for coding**: ~194K tokens (97%)
-
-**Workspace:**
-- Session log: ~150 tokens (0.075%)
-- Project .status files: ~300 tokens (0.15%)
-- Current BUILD-STATUS: ~3K tokens (1.5%)
-- **Total overhead**: ~4K tokens (2%)
-- **Available for coding**: ~196K tokens (98%)
+- 🟢 **Green** (<70%): Normal operation
+- 🟡 **Yellow** (70-85%): Note for later
+- 🟠 **Orange** (85-95%): Clear after current task
+- 🔴 **Red** (>95%): Clear immediately
 
 ### Context Clear Workflow
 
-When context gets full:
-
-1. **Save everything:**
-   ```
-   Update status
-   ```
-
-2. **Clear context:**
-   ```
-   /clear
-   ```
-
-3. **Resume immediately:**
-   ```
-   Check the build status and tell me where we are at
-   ```
-
-Resume cost: Only 2-4K tokens!
-
-### ⚙️ Configurable Auto-Approval Permissions
-
-Both modes include **aggressive auto-approval settings by default**, but you can easily customize the permission level for each project.
-
-**🎛️ Choose Your Permission Level**
-
-When you start a new project, run:
-```
-/setup-permissions
+```bash
+1. "Update status"        # Save progress
+2. /clear                 # Clear context
+3. "Check build status"   # Resume (~4K tokens)
 ```
 
-Claude will help you choose from 4 presets:
-- 🔵 **Aggressive** (default): Maximum speed - auto-approve everything
-- 🟢 **Moderate**: Balanced - auto-approve files/git/packages, ask for execution
-- 🟡 **Conservative**: More oversight - ask for most changes
-- 🔴 **Maximum Security**: Maximum control - approve nearly everything
+---
 
-**What's in Aggressive (Default):**
-- ✅ All file operations (Read, Write, Edit, Glob, Grep)
-- ✅ Complete git workflow (status, diff, commit, push, branch, checkout)
-- ✅ Package managers (npm, yarn, pnpm)
-- ✅ Python/Node execution and testing
-- ✅ File system operations (ls, mkdir, cp, mv, chmod, etc.)
-- ✅ Docker commands (build, run, compose, logs, etc.)
-- ✅ GitHub CLI (gh) for PR/issue management
+## Permission Presets
 
-**Safety Measures:**
-- 🛡️ Dangerous commands (like `rm -rf /`) are explicitly denied
-- 🛡️ Git force push requires approval (via git protocol)
+Run `/setup-permissions` to configure:
 
-**Why This Matters:**
-- ⚡ Eliminates approval prompts for common development operations
-- 🚀 Significantly speeds up Claude Code workflows
-- 🎯 Ideal for personal projects and trusted development environments
-- 🔧 Easy to adjust for different project types (personal, client, production)
-
-**Customization:**
-- **Quick setup**: Run `/setup-permissions` in any project to reconfigure
-- **Detailed guide**: See `project-template/.claude/SETTINGS-GUIDE.md` for comprehensive documentation
-- **Manual edit**: Edit `.claude/settings.local.json` directly for fine-tuning
+| Preset | Description |
+|--------|-------------|
+| **Aggressive** (default) | Auto-approve everything, maximum speed |
+| **Moderate** | Balanced - ask for execution commands |
+| **Conservative** | More oversight on changes |
+| **Maximum Security** | Approve nearly everything manually |
 
 ---
 
-## 🎓 Getting Help
+## Integration for Existing Projects
 
-### Quick Start Issues?
+Two tiers available:
 
-**Single Project Mode:**
-- Make sure you ran `./setup-project.sh`
-- Start Claude Code in your project directory
-- Say: `"Check the docs/project/ folder and help me get started"`
+### Essential Tier (Recommended)
 
-**Workspace Mode:**
-- Make sure you ran `./setup-workspace.sh`
-- Navigate to your workspace directory
-- Start Claude Code
-- Say: `"What's the status of my projects"`
+```bash
+./integrate-project.sh /path/to/project
+```
 
-### Common Questions
+**Includes**:
+- MODEL-STRATEGY.md (dynamic recommendations)
+- SUBAGENTS.md (sub-agent documentation)
+- PERSONAS.md (8 role personas)
+- Auto-run session-start hook
+- Status tracking
 
-**Q: Can I switch from Single Project to Workspace later?**
-A: Yes! Create a workspace, move your project into `projects/personal/`, add a `.status` file.
+### Extended Tier
 
-**Q: Can I use Workspace for just one project?**
-A: Absolutely, but Single Project Mode is simpler if you're focused on one thing.
+```bash
+./integrate-project.sh /path/to/project --extended
+```
 
-**Q: Do I need both modes?**
-A: No! Choose based on your current needs. You can always switch.
-
-**Q: What if I hit the token limit?**
-A: Claude will alert you proactively. Just say `"Update status"` then run `/clear`.
-
----
-
-## 🚀 What's New in v2.0.0
-
-- ✨ **NEW**: Dual-mode support (Single Project + Workspace)
-- ✨ **NEW**: Interactive setup wizards for both modes
-- ✨ **NEW**: Multi-project workspace organization
-- ✨ **NEW**: Cross-project session tracking
-- ✨ **NEW**: Template management system
-- ✅ All v1.0 features preserved and enhanced
-- 📖 Comprehensive documentation for both modes
+**Adds**:
+- Validated hooks (pre-commit, test-runner)
+- Permission presets
+- Advanced commands
 
 ---
 
-## 📜 License
+## Migration from v2.0
 
-MIT License - see [LICENSE](LICENSE) for details
+See [MIGRATION-V2-V3.md](docs/MIGRATION-V2-V3.md) for upgrade instructions.
 
----
-
-## 🙏 Acknowledgments
-
-Built with ❤️ for the Claude Code community.
-
-- **Inspired by**: Real-world solo development challenges
-- **Optimized for**: Claude Code's 200K token context window
-- **Tested with**: Multiple weekend projects and portfolio work
+**Breaking changes**:
+- "Agents" renamed to "Personas" (17 → 8)
+- Integration tiers simplified (4 → 2)
+- Hooks system added (requires settings.local.json update)
 
 ---
 
-## 🎯 Next Steps
+## Documentation
 
-1. **Choose your mode** (Single Project or Workspace)
-2. **Run the setup wizard** (`./setup-project.sh` or `./setup-workspace.sh`)
-3. **Start Claude Code** in your project/workspace
-4. **Begin building** with intelligent assistance
-
-**Happy coding! 🚀**
+| Document | Purpose |
+|----------|---------|
+| [QUICKSTART.md](docs/QUICKSTART.md) | 5-minute getting started |
+| [MIGRATION-V2-V3.md](docs/MIGRATION-V2-V3.md) | Upgrading from v2.0 |
+| [INTEGRATE-EXISTING.md](INTEGRATE-EXISTING.md) | Adding to existing projects |
+| `.claude/MODEL-STRATEGY.md` | Model recommendation guide |
+| `.claude/SUBAGENTS.md` | Sub-agent patterns |
+| `.claude/PERSONAS.md` | 8 role personas |
+| `.claude/hooks/README.md` | Hooks documentation |
 
 ---
 
-**Questions or feedback?** Open an issue on [GitHub](https://github.com/dnorth123/claude-code-project-starter/issues)
+## Requirements
+
+- Claude Code CLI
+- Git
+- Bash 4.0+
+
+**Optional**:
+- Node.js (for Node projects)
+- Python (for Python projects)
+- GitHub CLI (for PR/issue management)
+
+---
+
+## License
+
+MIT License - see [LICENSE](LICENSE) for details.
+
+---
+
+## Acknowledgments
+
+Built for the Claude Code community.
+
+- **Optimized for**: Opus 4.5, Sonnet 4.5, Haiku 4.5
+- **Designed for**: Personal projects scaling to professional quality
+- **Tested with**: Real-world development workflows
+
+---
+
+## Get Started
+
+1. **Clone or use template**
+2. **Run setup wizard** (`./setup-project.sh`)
+3. **Start Claude Code** (`claude`)
+4. **Say**: "Check the docs/project/ folder and help me get started"
+
+**Happy coding with Claude Code v3.0!**
+
+---
+
+**Questions?** [Open an issue](https://github.com/dnorth123/claude-code-project-starter/issues)

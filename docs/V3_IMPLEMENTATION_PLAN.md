@@ -1,646 +1,934 @@
 # Claude Code Project Starter v3.0 - Implementation Plan
 
+> **Status**: APPROVED - Implementation in Progress
+> **Version**: 1.1 (Refined based on feedback)
+> **Updated**: January 2026
+
 ## Executive Summary
 
-Complete overhaul of the Claude Code Project Starter template to leverage the latest Claude Code capabilities, including:
+Complete overhaul of the Claude Code Project Starter template to leverage the latest Claude Code capabilities:
 
-- **Dynamic model recommendations** (Opus 4.5 / Sonnet 4.5 / Haiku 4.5)
-- **Hooks system** for automated environment validation and session management
+- **Dynamic model analysis** with pros/cons recommendations (Opus 4.5 / Sonnet 4.5 / Haiku 4.5)
+- **Hooks system** with automatic + user-validated categories
 - **Full sub-agent integration** using Claude Code's Task tool
-- **Skills system** for custom slash commands
-- **Extended thinking** patterns for complex planning
-- **Background tasks** for long-running operations
-- **Hybrid agent system**: Real sub-agents + role-based personas
+- **8 consolidated role personas** (down from 17)
+- **Simplified 2-tier integration** system
+- **Extended thinking** and **background task** patterns
 
 **Target Users**: Personal projects that can scale to professional-level applications.
 
 ---
 
-## Current State Analysis
+## Refined Decisions (User Feedback)
 
-### What Exists (v2.0.0)
-- Phase-based development workflow
-- Token/context management with 4-tier alerts
-- Permission presets (Aggressive/Moderate/Conservative/Maximum Security)
-- Multi-project workspace support
-- "Agents" that are actually role-based prompt templates (17+ personas)
-- Custom commands via markdown files
-- Integration system for existing projects
+### 1. Hooks: Auto-Run vs. User Validation
 
-### What's Missing
-| Feature | Current State | Gap |
-|---------|--------------|-----|
-| Model selection | Not referenced | No dynamic recommendations |
-| Hooks | Not used | No session-start automation |
-| Real sub-agents | Conceptual only | Not using Task tool |
-| Skills | Not used | Commands are manual markdown |
-| Extended thinking | Not referenced | No complex reasoning guidance |
-| Background tasks | Not used | No async operation patterns |
-| Model Context Protocol | Basic Brave Search only | Limited MCP leverage |
+| Hook Type | Behavior | Examples |
+|-----------|----------|----------|
+| **Auto-Run** (Safe, non-destructive) | Execute silently on session start | Environment check, git status, dependency validation, build status display |
+| **User-Validated** (Potentially disruptive) | Prompt before execution | Pre-commit linting, auto-formatting, test runs, database operations |
+
+### 2. Role Personas: Consolidated to 8
+
+**Core 8 Personas** (optimized for sub-agent synergy):
+
+| Persona | Focus | Complements Sub-Agent |
+|---------|-------|----------------------|
+| **Full-Stack Developer** | Implementation, best practices | General-purpose agent |
+| **Debug Specialist** | Systematic troubleshooting | Explore agent |
+| **Code Reviewer** | Quality, architecture | Plan agent |
+| **Security Reviewer** | Vulnerability analysis | Explore agent |
+| **Test Engineer** | TDD, coverage strategies | Bash agent |
+| **DevOps Engineer** | Infrastructure, deployment | Bash agent |
+| **Product Strategist** | Requirements, roadmaps | Plan agent |
+| **UX Designer** | User-centered design | Plan agent |
+
+**Removed** (merged or redundant with sub-agents):
+- Tech Writer → Merged into system documentation
+- Content Strategist → Specialized, add back if needed
+- Discovery/UX Researcher → Merged into Product Strategist
+- Productivity Optimizer → Specialized, add back if needed
+- Launch Orchestrator → Merged into DevOps Engineer
+- AI Architect → Specialized, add back if needed
+- Prompt Engineer → Specialized, add back if needed
+- Data Analyst → Specialized, add back if needed
+
+### 3. Model Recommendations: Always Analyze
+
+Every task receives a model recommendation with:
+- **Recommended model** for the task
+- **Pros** of using that model
+- **Cons** / trade-offs
+- **Alternative** if user prefers different trade-off
+
+**Example Format**:
+```
+📊 Model Recommendation: Sonnet 4.5
+
+Task: Implement user authentication feature
+
+✅ Pros:
+- Optimal balance of speed and capability for feature work
+- Handles multi-file changes efficiently
+- Good at following existing patterns
+
+⚠️ Cons:
+- May need Opus 4.5 if architectural decisions required
+- Complex edge cases might benefit from deeper reasoning
+
+🔄 Alternative: Use Opus 4.5 if this involves security-critical design decisions
+```
+
+### 4. Integration Tiers: Simplified to 2
+
+| Tier | Description | Contents |
+|------|-------------|----------|
+| **Essential** | Recommended for all projects | Model strategy, auto-hooks, sub-agent docs, 8 personas, status tracking |
+| **Extended** | For complex/team projects | + Validated hooks, custom skills, CI/CD integration, advanced patterns |
 
 ---
 
-## v3.0 Architecture
+## Implementation Order (Optimized)
 
-### Core Philosophy Changes
+The most logical order for maximum value:
 
 ```
-v2.0 Philosophy: "Template system with documentation"
-v3.0 Philosophy: "Intelligent development companion with adaptive capabilities"
+Phase 1: Model Strategy System (Foundation)
+         ↓ Informs all other recommendations
+Phase 2: Sub-Agent Integration (Core Capability)
+         ↓ Enables advanced workflows
+Phase 3: Hooks System (Automation Layer)
+         ↓ Built on sub-agent patterns
+Phase 4: Role Personas (Consolidated 8)
+         ↓ Complements sub-agents
+Phase 5: Integration System (Simplified)
+         ↓ Packages everything together
+Phase 6: Documentation & Migration
 ```
-
-**Key Shifts:**
-1. **Static → Dynamic**: Model selection adapts to task complexity
-2. **Manual → Automated**: Hooks handle setup, validation, status updates
-3. **Conceptual → Real**: Sub-agents actually invoked via Task tool
-4. **Documentation → Intelligence**: System learns project patterns
 
 ---
 
-## Implementation Phases
+## Phase 1: Model Strategy System
 
-### Phase 1: Foundation - Model & Hooks System
+### Goal
+Create a comprehensive model recommendation system that always analyzes tasks and provides intelligent recommendations with trade-offs.
 
-#### 1.1 Dynamic Model Recommendation System
+### New Files
 
-**New File**: `.claude/MODEL-STRATEGY.md`
+#### `.claude/MODEL-STRATEGY.md`
 
 ```markdown
-# Model Selection Strategy
+# Model Strategy System
 
-## Automatic Model Recommendations
+## Always-Analyze Approach
 
-Claude Code will recommend the optimal model based on task characteristics:
+Claude Code analyzes every task and recommends the optimal model. Recommendations include:
+- Primary recommendation with rationale
+- Pros and cons of the choice
+- Alternative model if different trade-offs preferred
+
+## Model Profiles
 
 ### Opus 4.5 (claude-opus-4-5-20251101)
-**Best for:** Complex reasoning, architecture decisions, difficult debugging
-- Multi-file refactoring
+
+**Strengths**:
+- Deepest reasoning and extended thinking
+- Best for architecture and complex decisions
+- Superior at multi-file refactoring
+- Excels at security analysis and edge cases
+- Most thorough code review
+
+**Best For**:
 - System architecture design
-- Complex algorithm implementation
-- Security audits
-- Performance optimization analysis
-- Extended thinking tasks
+- Complex debugging (race conditions, memory leaks)
+- Security audits and threat modeling
+- Large-scale refactoring
+- Critical algorithm implementation
+- Phase 0 planning and design decisions
+
+**Trade-offs**:
+- Higher latency
+- Higher cost
+- May be overkill for simple tasks
+
+---
 
 ### Sonnet 4.5
-**Best for:** Day-to-day development, feature implementation
-- Feature development
-- Code reviews
-- Test writing
-- Documentation
-- API integration
+
+**Strengths**:
+- Excellent balance of speed and capability
+- Strong at feature implementation
+- Good pattern recognition and consistency
+- Efficient multi-file editing
+- Reliable test generation
+
+**Best For**:
+- Day-to-day feature development
 - Standard debugging
+- Code reviews (non-architectural)
+- API integration
+- Documentation updates
+- Test writing
+
+**Trade-offs**:
+- May miss subtle architectural issues
+- Complex edge cases may need Opus
+- Extended thinking less powerful
+
+---
 
 ### Haiku 4.5
-**Best for:** Quick operations, simple edits
-- File navigation
-- Simple edits
-- Status checks
+
+**Strengths**:
+- Fastest response time
+- Most cost-efficient
+- Excellent for routine operations
+- Low latency for interactive work
+
+**Best For**:
+- File navigation and search
+- Simple edits (typos, formatting)
+- Git operations (commits, status)
+- Quick lookups and checks
+- Status updates
+- Simple refactors (rename, move)
+
+**Trade-offs**:
+- Limited complex reasoning
+- May miss nuances in code review
+- Not suitable for architectural decisions
+
+---
+
+## Recommendation Matrix
+
+| Task Type | Primary | Alternative | Notes |
+|-----------|---------|-------------|-------|
+| Architecture design | Opus 4.5 | Sonnet 4.5 | Use Opus for initial design, Sonnet for refinement |
+| Feature implementation | Sonnet 4.5 | Opus 4.5 | Upgrade if hitting complexity walls |
+| Bug fix (simple) | Haiku 4.5 | Sonnet 4.5 | Upgrade if cause unclear |
+| Bug fix (complex) | Opus 4.5 | Sonnet 4.5 | Use Opus for race conditions, memory issues |
+| Code review | Sonnet 4.5 | Opus 4.5 | Use Opus for security-critical or architectural review |
+| Security audit | Opus 4.5 | - | Always use Opus for security |
+| Test writing | Sonnet 4.5 | Haiku 4.5 | Haiku fine for simple unit tests |
+| Documentation | Sonnet 4.5 | Haiku 4.5 | Haiku fine for minor updates |
+| Refactoring (large) | Opus 4.5 | Sonnet 4.5 | Use Opus for >5 files or architectural changes |
+| Refactoring (small) | Sonnet 4.5 | Haiku 4.5 | Haiku fine for renames, moves |
+| Git operations | Haiku 4.5 | - | Always sufficient |
+| Status checks | Haiku 4.5 | - | Always sufficient |
+| Planning (Phase 0) | Opus 4.5 | Sonnet 4.5 | Use Opus for comprehensive planning |
+| Planning (task-level) | Sonnet 4.5 | Opus 4.5 | Upgrade for complex features |
+
+---
+
+## Task Analysis Signals
+
+Claude analyzes these signals to recommend models:
+
+### Complexity Indicators → Opus 4.5
+- Multi-system interaction
+- Security implications
+- Performance optimization
+- Architectural decisions
+- "Think through", "analyze", "design"
+- Error messages with unclear cause
+- >5 files affected
+
+### Standard Indicators → Sonnet 4.5
+- Feature implementation
+- API integration
+- Test generation
+- Code review request
+- Documentation
+- Standard debugging
+- 2-5 files affected
+
+### Simple Indicators → Haiku 4.5
+- Single file edits
+- Formatting/style fixes
 - Git operations
-- Quick lookups
-- Formatting fixes
+- Status checks
+- File navigation
+- Rename/move operations
+- Quick questions
+
+---
+
+## User Override
+
+Users can always override recommendations:
+- "Use Opus for this" - Force Opus 4.5
+- "Quick mode" or "Use Haiku" - Force Haiku 4.5
+- "Standard" - Use Sonnet 4.5
+
+The system respects user preferences while still providing recommendations.
 ```
 
-**Implementation**: Add model recommendation logic to `claude.md` that suggests models based on:
-- Task keywords (e.g., "architecture" → Opus, "quick fix" → Haiku)
-- File complexity (number of files, LOC)
-- Phase of development (planning → Opus, implementation → Sonnet)
-- Error complexity (simple syntax → Haiku, complex logic → Opus)
+### Integration Points
 
-#### 1.2 Hooks System
+Update `.claude/claude.md` to include model recommendation section and examples.
 
-**New Directory**: `.claude/hooks/`
+---
+
+## Phase 2: Sub-Agent Integration
+
+### Goal
+Document and enable full use of Claude Code's Task tool with specialized sub-agents.
+
+### New Files
+
+#### `.claude/SUBAGENTS.md`
+
+```markdown
+# Claude Code Sub-Agents
+
+## Overview
+
+Claude Code provides specialized sub-agents via the Task tool. These are real, autonomous agents that execute tasks independently and return results.
+
+## Built-in Sub-Agent Types
+
+### Explore Agent
+**Type**: `Explore`
+**Invocation**: Automatic for codebase exploration
+
+**Capabilities**:
+- Fast file pattern matching (glob)
+- Code search (grep)
+- Architecture understanding
+- Dependency analysis
+
+**Use When**:
+- "Where is X implemented?"
+- "Find all files related to Y"
+- "How does the auth system work?"
+- "What's the codebase structure?"
+
+**Model Pairing**: Usually runs with Haiku for speed, escalates to Sonnet if complex.
+
+---
+
+### Plan Agent
+**Type**: `Plan`
+**Invocation**: "Plan the implementation of [feature]"
+
+**Capabilities**:
+- Implementation strategy design
+- Step-by-step breakdowns
+- Architectural trade-off analysis
+- File change identification
+
+**Use When**:
+- Starting a new feature
+- Complex refactoring
+- Architecture decisions
+- Multi-step implementations
+
+**Model Pairing**: Sonnet 4.5 default, Opus 4.5 for complex architecture.
+
+**Output Format**:
+1. Step-by-step implementation plan
+2. Files to create/modify
+3. Critical decisions identified
+4. Potential risks/challenges
+
+---
+
+### Bash Agent
+**Type**: `Bash`
+**Invocation**: Automatic for command execution
+
+**Capabilities**:
+- Command execution
+- Build processes
+- Test running
+- Git operations
+- Package management
+
+**Use When**:
+- Running tests
+- Building projects
+- Git operations
+- Installing dependencies
+- Running scripts
+
+**Model Pairing**: Haiku 4.5 sufficient for most operations.
+
+---
+
+### General-Purpose Agent
+**Type**: `general-purpose`
+**Invocation**: Complex multi-step tasks
+
+**Capabilities**:
+- Autonomous multi-step execution
+- Research and code search
+- Complex task completion
+- Cross-file operations
+
+**Use When**:
+- Multi-step implementations
+- Complex research tasks
+- Tasks requiring multiple tool types
+- Autonomous execution desired
+
+**Model Pairing**: Sonnet 4.5 default, Opus 4.5 for complex tasks.
+
+---
+
+## Sub-Agent Patterns
+
+### Pattern 1: Explore → Plan → Execute
+
+Best for new features or unfamiliar codebases:
+
+```
+1. Explore Agent: "Find all authentication-related code"
+   → Returns: File locations, patterns, dependencies
+
+2. Plan Agent: "Plan adding OAuth2 support"
+   → Returns: Implementation steps, files to modify
+
+3. General-Purpose Agent: Execute the plan
+   → Returns: Completed implementation
+```
+
+### Pattern 2: Parallel Exploration
+
+Best for comprehensive codebase understanding:
+
+```
+Launch in parallel:
+├── Explore Agent: "Find all API endpoints"
+├── Explore Agent: "Find database models"
+└── Explore Agent: "Find authentication code"
+
+Combine results for full picture.
+```
+
+### Pattern 3: Background Build + Continue
+
+Best for efficient time use:
+
+```
+1. Bash Agent (background): "npm run build"
+2. Continue with documentation or planning
+3. Check build results when complete
+```
+
+### Pattern 4: Iterative Debugging
+
+Best for complex bugs:
+
+```
+1. Explore Agent: Find error location
+2. Explore Agent: Find related code
+3. Plan Agent: Diagnose root cause
+4. General-Purpose Agent: Implement fix
+5. Bash Agent: Run tests to verify
+```
+
+---
+
+## Background Execution
+
+Sub-agents can run in background for long tasks:
+
+**Ideal for**:
+- Test suites (>30 seconds)
+- Build processes
+- Large codebase searches
+- Database migrations
+
+**Usage**:
+"Run the tests in background and continue with [next task]"
+
+**Checking status**:
+"What's the status of the background task?"
+
+---
+
+## Sub-Agent + Persona Synergy
+
+Sub-agents handle execution; personas provide perspective:
+
+| Sub-Agent | Best Paired Personas |
+|-----------|---------------------|
+| Explore | Debug Specialist, Security Reviewer |
+| Plan | Product Strategist, Code Reviewer, UX Designer |
+| Bash | Test Engineer, DevOps Engineer |
+| General-Purpose | Full-Stack Developer |
+
+**Example**: Security Audit
+1. **Explore Agent** finds auth code
+2. **Security Reviewer persona** analyzes vulnerabilities
+3. **Plan Agent** creates remediation plan
+4. **General-Purpose Agent** implements fixes
+```
+
+---
+
+## Phase 3: Hooks System
+
+### Goal
+Implement hooks with clear auto-run vs. user-validated categorization.
+
+### New Directory Structure
 
 ```
 .claude/hooks/
-├── session-start.sh          # Runs on every session start
-├── pre-commit-validation.sh  # Runs before commits (optional)
-└── context-checkpoint.sh     # Runs at context thresholds
+├── auto/                    # Auto-run hooks (safe, non-destructive)
+│   ├── session-start.sh     # Environment validation
+│   └── context-check.sh     # Token monitoring
+├── validated/               # User-validated hooks (potentially disruptive)
+│   ├── pre-commit.sh        # Lint/format before commit
+│   ├── test-runner.sh       # Run test suite
+│   └── deploy-check.sh      # Pre-deployment validation
+└── README.md                # Hook documentation
 ```
 
-**session-start.sh** (Primary Hook):
+### Auto-Run Hooks
+
+#### `session-start.sh`
 ```bash
 #!/bin/bash
-# Claude Code Session Start Hook
-# Validates environment and prepares for development
+# Auto-runs on every session start
+# Safe, non-destructive, informational only
 
-set -e
+echo "📋 Session Environment Check"
+echo "─────────────────────────────"
 
-echo "🚀 Session Start Hook Running..."
-
-# 1. Check Node.js version (if Node project)
-if [ -f "package.json" ]; then
-    required_node=$(node -p "require('./package.json').engines?.node || '18'" 2>/dev/null || echo "18")
-    current_node=$(node -v 2>/dev/null || echo "not installed")
-    echo "📦 Node.js: $current_node (requires: $required_node)"
-fi
-
-# 2. Check for uncommitted changes
+# Git status (informational)
 if [ -d ".git" ]; then
+    branch=$(git branch --show-current 2>/dev/null)
     changes=$(git status --porcelain 2>/dev/null | wc -l | tr -d ' ')
+    echo "🔀 Branch: $branch"
     if [ "$changes" -gt "0" ]; then
-        echo "⚠️  Uncommitted changes: $changes files"
+        echo "📝 Uncommitted: $changes files"
     else
-        echo "✅ Git: Clean working tree"
+        echo "✅ Working tree: clean"
     fi
 fi
 
-# 3. Check dependencies
-if [ -f "package.json" ] && [ ! -d "node_modules" ]; then
-    echo "⚠️  Dependencies not installed. Run: npm install"
+# Node.js check (informational)
+if [ -f "package.json" ]; then
+    if [ -d "node_modules" ]; then
+        echo "📦 Dependencies: installed"
+    else
+        echo "⚠️  Dependencies: not installed (run npm install)"
+    fi
 fi
 
-# 4. Run project-specific validations
-if [ -f ".claude/hooks/project-validate.sh" ]; then
-    source .claude/hooks/project-validate.sh
+# Python check (informational)
+if [ -f "requirements.txt" ] || [ -f "pyproject.toml" ]; then
+    if [ -d ".venv" ] || [ -d "venv" ]; then
+        echo "🐍 Virtual env: found"
+    else
+        echo "⚠️  Virtual env: not found"
+    fi
 fi
 
-# 5. Load build status summary
+# Build status (informational)
 if [ -f "docs/project/build-status.md" ]; then
-    echo ""
-    echo "📊 Project Status:"
-    head -20 docs/project/build-status.md | grep -E "^(#|Phase|Progress|Status)" | head -5
+    phase=$(grep -m1 "Current Phase" docs/project/build-status.md 2>/dev/null | head -1)
+    if [ -n "$phase" ]; then
+        echo "📊 $phase"
+    fi
+fi
+
+echo "─────────────────────────────"
+echo "✅ Ready. Model will be recommended based on your task."
+```
+
+### User-Validated Hooks
+
+#### `pre-commit.sh`
+```bash
+#!/bin/bash
+# Requires user confirmation before running
+# Modifies files (linting/formatting)
+
+echo "🔍 Pre-commit validation"
+echo "This will run linting and may auto-fix issues."
+echo ""
+
+# Check what would be linted
+if [ -f "package.json" ]; then
+    echo "Will run: npm run lint (if available)"
+fi
+
+if [ -f "pyproject.toml" ] || [ -f "setup.py" ]; then
+    echo "Will run: ruff check / black (if available)"
 fi
 
 echo ""
-echo "✅ Session ready. Model recommendation will appear based on your first task."
+echo "Proceed? (This may modify files)"
 ```
 
-**Hook Configuration** (in `settings.local.json`):
+### Hook Configuration
+
+Update `settings.local.json`:
 ```json
 {
   "hooks": {
-    "sessionStart": {
-      "command": "bash .claude/hooks/session-start.sh",
-      "timeout": 30000
-    }
+    "SessionStart": [
+      {
+        "command": "bash .claude/hooks/auto/session-start.sh",
+        "timeout": 10000,
+        "silent": false
+      }
+    ]
   }
 }
 ```
 
 ---
 
-### Phase 2: Sub-Agent Integration
+## Phase 4: Role Personas (Consolidated 8)
 
-#### 2.1 Real Sub-Agent System
+### Goal
+Replace 17 personas with 8 focused roles that complement sub-agents.
 
-Replace conceptual "agents" with actual Claude Code Task tool integration.
-
-**New File**: `.claude/SUBAGENTS.md`
-
-```markdown
-# Claude Code Sub-Agents
-
-## Built-in Sub-Agent Types
-
-Claude Code provides specialized sub-agents via the Task tool:
-
-### Explore Agent
-**Type**: `Explore`
-**Use for**: Codebase exploration, finding files, understanding architecture
-**Invoke**: Automatic when searching/exploring
-
-### Plan Agent
-**Type**: `Plan`
-**Use for**: Implementation planning, architecture decisions
-**Invoke**: "Plan the implementation of [feature]"
-**Features**: Extended thinking, step-by-step breakdowns
-
-### Bash Agent
-**Type**: `Bash`
-**Use for**: Command execution, git operations, builds
-**Invoke**: Automatic for terminal commands
-
-### General-Purpose Agent
-**Type**: `general-purpose`
-**Use for**: Complex multi-step tasks, research, code search
-**Invoke**: Complex tasks requiring autonomy
-
-## Sub-Agent Patterns
-
-### Parallel Exploration
-For comprehensive understanding, launch multiple Explore agents:
-- "Explore the authentication system"
-- "Find all API endpoints"
-- "Analyze the database schema"
-
-### Sequential Planning
-For complex features, chain agents:
-1. Explore Agent → Understand current state
-2. Plan Agent → Design implementation
-3. General-Purpose Agent → Execute implementation
-
-### Background Operations
-For long-running tasks:
-- Build processes
-- Test suites
-- Database migrations
-```
-
-#### 2.2 Hybrid Agent System (Sub-Agents + Role Personas)
-
-Keep role-based personas for perspective/expertise, but clarify they're prompting strategies, not real agents.
-
-**Renamed File**: `.workspace/ROLE-PERSONAS.md` (was `AGENT-QUICK-REF.md`)
+### New File: `.claude/PERSONAS.md`
 
 ```markdown
 # Role Personas
 
-Role personas provide specialized perspectives and expertise patterns.
-They complement sub-agents by adding domain knowledge and best practices.
+## Overview
 
-## How Personas Work
+Role personas provide specialized perspectives and domain expertise. They complement sub-agents:
+- **Sub-agents** = Execution (do the work)
+- **Personas** = Perspective (how to think about the work)
 
-Personas are **prompting strategies** that shape Claude's responses.
-They don't launch separate agents—they adjust the current conversation's focus.
+## The Core 8 Personas
 
-## Available Personas
+### 1. Full-Stack Developer
+**Focus**: Implementation, modern best practices, clean code
 
-### Development Personas
-- **Full-Stack Developer**: Modern web dev expertise
-- **Debug Specialist**: Systematic troubleshooting approach
-- **DevOps Engineer**: Infrastructure and deployment focus
+**Invoke**: "As a full-stack developer..." or natural development requests
 
-### Quality Personas
-- **Code Reviewer**: Architecture and best practices lens
-- **Security Reviewer**: Vulnerability-focused analysis
-- **Test Generator**: TDD and coverage emphasis
+**Expertise**:
+- Frontend: React, Vue, Next.js, TypeScript
+- Backend: Node.js, Python, Go
+- Database: PostgreSQL, MongoDB, Redis
+- API design and integration
 
-### Strategy Personas
-- **Product Strategist**: Requirements and roadmap perspective
-- **UX Designer**: User-centered design thinking
-- **Content Strategist**: Messaging and copy expertise
-
-## Combining Sub-Agents + Personas
-
-### Example: Security Audit
-1. **Explore Agent** (sub-agent): Find all auth-related code
-2. **Security Reviewer** (persona): Analyze with security focus
-3. **Plan Agent** (sub-agent): Create remediation plan
-
-### Example: Feature Development
-1. **Product Strategist** (persona): Define requirements
-2. **Plan Agent** (sub-agent): Design implementation
-3. **Full-Stack Developer** (persona): Implement with best practices
-4. **Test Generator** (persona): Ensure test coverage
-```
+**Best With**: General-purpose agent for implementation
 
 ---
 
-### Phase 3: Skills System
+### 2. Debug Specialist
+**Focus**: Systematic troubleshooting, root cause analysis
 
-#### 3.1 Convert Commands to Skills
+**Invoke**: "Help me debug..." or "I'm getting this error..."
 
-Transform markdown commands into proper Claude Code skills.
+**Methodology**:
+1. Reproduce the issue
+2. Isolate variables
+3. Form hypotheses
+4. Test systematically
+5. Verify fix doesn't introduce regressions
 
-**Updated Structure**:
-```
-.claude/
-├── commands/           # Keep for compatibility
-│   └── *.md
-└── skills/             # New: Proper skills
-    ├── setup-project.md
-    ├── smart-commit.md
-    ├── context-checkpoint.md
-    ├── model-recommend.md
-    └── launch-subagent.md
-```
-
-**Example Skill**: `/smart-commit`
-
-```markdown
-# Smart Commit
-
-Analyze changes and create an intelligent commit with the recommended model.
-
-## Behavior
-
-1. **Analyze Changes**
-   - Run `git diff --staged` and `git diff`
-   - Categorize: feature/fix/refactor/docs/test/chore
-
-2. **Recommend Model**
-   - Simple changes (1-2 files, <50 lines) → Haiku 4.5
-   - Standard changes → Sonnet 4.5
-   - Complex refactors → Opus 4.5
-
-3. **Generate Commit Message**
-   - Follow conventional commits format
-   - Include scope if detectable
-   - Add body for complex changes
-
-4. **Execute**
-   - Stage relevant files
-   - Create commit
-   - Show result
-
-## Usage
-`/smart-commit` or "commit my changes intelligently"
-```
+**Best With**: Explore agent to find related code
 
 ---
 
-### Phase 4: Extended Thinking & Background Tasks
+### 3. Code Reviewer
+**Focus**: Quality, architecture, maintainability
 
-#### 4.1 Extended Thinking Patterns
+**Invoke**: "Review this code..." or "Check my implementation..."
 
-**New File**: `.claude/THINKING-PATTERNS.md`
+**Reviews For**:
+- Code clarity and readability
+- Design patterns and architecture
+- Performance considerations
+- Error handling
+- Edge cases
+- Test coverage
 
-```markdown
-# Extended Thinking Patterns
+**Best With**: Plan agent for architectural review
 
-## When to Use Extended Thinking
+---
 
-Extended thinking (deep reasoning mode) is valuable for:
+### 4. Security Reviewer
+**Focus**: Vulnerability analysis, secure coding
 
-### Architecture Decisions
-- System design choices
-- Technology selection
-- Scalability planning
-- Trade-off analysis
+**Invoke**: "Security review..." or "Check for vulnerabilities..."
 
-### Complex Debugging
-- Multi-system issues
-- Race conditions
-- Memory leaks
-- Performance bottlenecks
+**Checks For**:
+- OWASP Top 10 vulnerabilities
+- Authentication/authorization flaws
+- Input validation
+- Secrets management
+- SQL injection, XSS, CSRF
+- Dependency vulnerabilities
 
-### Security Analysis
-- Threat modeling
-- Vulnerability assessment
-- Attack surface analysis
+**Best With**: Explore agent to find security-sensitive code
 
-### Refactoring
-- Large-scale restructuring
-- API redesign
-- Database schema changes
+**Model Note**: Always recommend Opus 4.5 for security reviews
 
-## Triggering Extended Thinking
+---
 
-Use these phrases to encourage deep analysis:
-- "Think through this carefully..."
-- "Consider all the implications..."
-- "What are the trade-offs between..."
-- "Analyze the architecture of..."
+### 5. Test Engineer
+**Focus**: TDD, test strategy, coverage
 
-## Model Pairing
+**Invoke**: "Write tests for..." or "Help me test..."
 
-Extended thinking works best with:
-- **Opus 4.5**: Maximum reasoning depth
-- **Sonnet 4.5**: Good balance of speed/depth
+**Approach**:
+- Unit tests for logic
+- Integration tests for flows
+- E2E tests for critical paths
+- Edge case identification
+- Mock strategy
+
+**Best With**: Bash agent for running tests
+
+---
+
+### 6. DevOps Engineer
+**Focus**: Infrastructure, deployment, CI/CD
+
+**Invoke**: "Help me deploy..." or "Set up CI/CD..."
+
+**Expertise**:
+- Docker and containerization
+- CI/CD pipelines (GitHub Actions, etc.)
+- Cloud platforms (AWS, GCP, Vercel)
+- Monitoring and logging
+- Environment management
+
+**Best With**: Bash agent for infrastructure commands
+
+---
+
+### 7. Product Strategist
+**Focus**: Requirements, roadmaps, feature definition
+
+**Invoke**: "Help me define..." or "Plan the requirements for..."
+
+**Approach**:
+- User story development
+- Feature prioritization
+- Scope management
+- MVP definition
+- Roadmap planning
+
+**Best With**: Plan agent for implementation planning
+
+---
+
+### 8. UX Designer
+**Focus**: User-centered design, interface patterns
+
+**Invoke**: "Design the interface for..." or "UX review..."
+
+**Expertise**:
+- Information architecture
+- Interaction design
+- Accessibility (a11y)
+- Design systems
+- User flow optimization
+
+**Best With**: Plan agent for design planning
+
+---
+
+## Persona + Sub-Agent Workflows
+
+### Feature Development
+```
+1. Product Strategist: Define requirements
+2. Plan Agent: Create implementation plan
+3. UX Designer: Design interface approach
+4. Full-Stack Developer: Implement
+5. Test Engineer: Write tests
+6. Code Reviewer: Final review
 ```
 
-#### 4.2 Background Task Patterns
-
-**New File**: `.claude/BACKGROUND-TASKS.md`
-
-```markdown
-# Background Task Patterns
-
-## When to Use Background Tasks
-
-Background tasks allow continued work while long operations run.
-
-### Ideal For
-- Test suite execution (>30 seconds)
-- Build processes
-- Linting large codebases
-- Database migrations
-- Deployment scripts
-
-### How to Use
-
-1. **Launch in Background**
-   "Run the tests in the background and continue with the next task"
-
-2. **Check Status**
-   "What's the status of the background tests?"
-
-3. **Review Results**
-   When notified of completion, review output
-
-### Patterns
-
-**Parallel Development**
+### Bug Investigation
 ```
-1. Launch test suite in background
-2. Continue implementing next feature
-3. Review test results when complete
-4. Fix any failures
+1. Debug Specialist: Systematic analysis
+2. Explore Agent: Find related code
+3. Security Reviewer: Check if security-related
+4. Full-Stack Developer: Implement fix
+5. Test Engineer: Add regression test
 ```
 
-**Build While Documenting**
+### Security Audit
 ```
-1. Launch production build in background
-2. Update documentation
-3. Verify build succeeded
-4. Deploy
+1. Explore Agent: Find security-sensitive code
+2. Security Reviewer: Analyze vulnerabilities
+3. Plan Agent: Create remediation plan
+4. Full-Stack Developer: Implement fixes
+5. Security Reviewer: Verify fixes
+```
+
+### Deployment
+```
+1. DevOps Engineer: Plan deployment
+2. Test Engineer: Verify all tests pass
+3. Code Reviewer: Pre-deploy review
+4. Bash Agent: Execute deployment
+5. DevOps Engineer: Verify deployment
 ```
 ```
 
 ---
 
-### Phase 5: Integration System Update
+## Phase 5: Simplified Integration System
 
-#### 5.1 Enhanced Integration for Existing Projects
+### Goal
+Reduce integration tiers from 4 to 2 for clarity.
 
-Update `integrate-project.sh` to include v3.0 features.
+### New Tiers
 
-**New Integration Levels**:
+#### Essential Tier (Recommended for All)
+**Includes**:
+- Model strategy system (always-analyze)
+- Auto-run hooks (session-start, context-check)
+- Sub-agent documentation
+- 8 core personas
+- Status tracking system
+- Phase-based workflow
 
-| Level | Features | Time |
-|-------|----------|------|
-| **Minimal** | Model strategy, basic hooks | 15-30 min |
-| **Standard** | + Sub-agents, skills, status tracking | 1-2 hours |
-| **Full** | + Extended thinking, background tasks, personas | 2-4 hours |
-| **Professional** | + Security presets, CI/CD hooks, team workflows | 4-8 hours |
+**Setup Time**: 15-30 minutes
 
-**New Integration Options**:
+**Command**: `./integrate-project.sh` (default)
+
+#### Extended Tier (Complex/Team Projects)
+**Includes Everything in Essential, Plus**:
+- Validated hooks (pre-commit, test-runner)
+- Custom skills support
+- CI/CD hook integration
+- Advanced background task patterns
+- Team workflow documentation
+
+**Setup Time**: 1-2 hours
+
+**Command**: `./integrate-project.sh --extended`
+
+### Updated Integration Script
+
 ```bash
-./integrate-project.sh --level full --with-hooks --with-skills
+#!/bin/bash
+# integrate-project.sh v3.0
+
+TIER="${1:---essential}"
+
+case "$TIER" in
+  --essential|"")
+    echo "Installing Essential tier..."
+    # Copy: MODEL-STRATEGY.md, SUBAGENTS.md, PERSONAS.md
+    # Copy: hooks/auto/
+    # Copy: settings updates
+    # Skip: hooks/validated/, custom skills
+    ;;
+  --extended)
+    echo "Installing Extended tier..."
+    # Copy everything
+    ;;
+  *)
+    echo "Usage: ./integrate-project.sh [--essential|--extended]"
+    exit 1
+    ;;
+esac
 ```
 
 ---
 
-### Phase 6: Documentation & Migration
+## Phase 6: Documentation & Migration
 
-#### 6.1 Updated Documentation Structure
+### Updated File Structure
 
 ```
-docs/
-├── QUICKSTART.md           # 5-minute getting started
-├── MODEL-SELECTION.md      # When to use which model
-├── SUBAGENT-GUIDE.md       # Complete sub-agent reference
-├── HOOKS-GUIDE.md          # Hook configuration and examples
-├── SKILLS-REFERENCE.md     # All available skills
-├── MIGRATION-V2-V3.md      # Upgrading from v2.0
-└── project/                # Project-specific docs (unchanged)
+project-template/
+├── .claude/
+│   ├── claude.md                    # Updated with model recommendations
+│   ├── settings.local.json          # Updated with hooks
+│   ├── MODEL-STRATEGY.md            # NEW: Model recommendation system
+│   ├── SUBAGENTS.md                 # NEW: Sub-agent documentation
+│   ├── PERSONAS.md                  # NEW: 8 consolidated personas
+│   ├── hooks/
+│   │   ├── auto/
+│   │   │   ├── session-start.sh     # Auto-run: environment check
+│   │   │   └── context-check.sh     # Auto-run: token monitoring
+│   │   ├── validated/
+│   │   │   ├── pre-commit.sh        # Validated: lint/format
+│   │   │   └── test-runner.sh       # Validated: run tests
+│   │   └── README.md                # Hook documentation
+│   ├── presets/                     # Keep existing presets
+│   └── commands/                    # Keep for compatibility
+│
+├── docs/
+│   ├── QUICKSTART.md                # NEW: 5-minute getting started
+│   ├── MIGRATION-V2-V3.md           # NEW: Upgrade guide
+│   └── project/                     # Unchanged
+│
+└── workspace-template/
+    └── .workspace/
+        ├── CLAUDE.md                # Updated references
+        ├── PERSONAS.md              # NEW: Workspace-level personas
+        ├── SUBAGENT-WORKFLOWS.md    # NEW: Multi-project patterns
+        └── AGENT-QUICK-REF.md       # DEPRECATED: Redirect to PERSONAS.md
 ```
 
-#### 6.2 Migration Guide
+### Migration Guide Summary
 
-**MIGRATION-V2-V3.md**:
-```markdown
-# Migrating from v2.0 to v3.0
+**For v2.0 Users**:
+1. Run `./migrate-v2-to-v3.sh`
+2. Review new MODEL-STRATEGY.md
+3. Verify hooks work correctly
+4. Update any custom agent references to use personas
 
-## Breaking Changes
-
-1. **Agent References**
-   - v2.0: "Agents" were role-based prompts
-   - v3.0: Real sub-agents via Task tool + separate role personas
-
-2. **Commands → Skills**
-   - v2.0: Markdown files in `.claude/commands/`
-   - v3.0: Skills in `.claude/skills/` with enhanced capabilities
-
-3. **Model Selection**
-   - v2.0: Not addressed
-   - v3.0: Dynamic model recommendations throughout
-
-## Migration Steps
-
-### Automatic Migration
-Run the migration script:
-```bash
-./migrate-v2-to-v3.sh
-```
-
-### Manual Migration
-1. Update `.claude/` directory structure
-2. Add hooks configuration
-3. Convert commands to skills
-4. Update CLAUDE.md references
-```
+**Breaking Changes**:
+- "Agents" renamed to "Personas" (clarifies they're perspectives, not sub-agents)
+- 17 personas → 8 core personas
+- Commands location unchanged but skills recommended for new commands
 
 ---
 
-## Implementation Order
+## Implementation Checklist
 
-```
-Week 1: Foundation
-├── Day 1-2: Model recommendation system
-├── Day 3-4: Hooks system implementation
-└── Day 5: Testing & refinement
+### Phase 1: Model Strategy
+- [ ] Create MODEL-STRATEGY.md
+- [ ] Update claude.md with model recommendation section
+- [ ] Add recommendation format examples
+- [ ] Test recommendation logic
 
-Week 2: Sub-Agents & Skills
-├── Day 1-2: Sub-agent documentation & integration
-├── Day 3-4: Skills system implementation
-└── Day 5: Hybrid agent system (personas)
+### Phase 2: Sub-Agents
+- [ ] Create SUBAGENTS.md
+- [ ] Document all sub-agent types
+- [ ] Add workflow patterns
+- [ ] Test sub-agent invocations
 
-Week 3: Advanced Features
-├── Day 1-2: Extended thinking patterns
-├── Day 3-4: Background task patterns
-└── Day 5: Testing all features together
+### Phase 3: Hooks
+- [ ] Create hooks directory structure
+- [ ] Implement session-start.sh (auto)
+- [ ] Implement context-check.sh (auto)
+- [ ] Implement pre-commit.sh (validated)
+- [ ] Update settings.local.json
+- [ ] Test hook execution
 
-Week 4: Integration & Polish
-├── Day 1-2: Update integration system
-├── Day 3-4: Migration tools & documentation
-└── Day 5: Final testing, README update, release
-```
+### Phase 4: Personas
+- [ ] Create PERSONAS.md with 8 roles
+- [ ] Document persona + sub-agent synergy
+- [ ] Remove deprecated AGENT-QUICK-REF.md references
+- [ ] Update workspace CLAUDE.md
 
----
+### Phase 5: Integration
+- [ ] Update integrate-project.sh for 2 tiers
+- [ ] Create Essential tier package
+- [ ] Create Extended tier package
+- [ ] Test both integration paths
 
-## File Changes Summary
-
-### New Files
-```
-.claude/
-├── hooks/
-│   ├── session-start.sh
-│   ├── pre-commit-validation.sh
-│   └── context-checkpoint.sh
-├── skills/
-│   ├── setup-project.md
-│   ├── smart-commit.md
-│   ├── context-checkpoint.md
-│   ├── model-recommend.md
-│   └── launch-subagent.md
-├── MODEL-STRATEGY.md
-├── SUBAGENTS.md
-├── THINKING-PATTERNS.md
-└── BACKGROUND-TASKS.md
-
-.workspace/
-├── ROLE-PERSONAS.md (renamed from AGENT-QUICK-REF.md)
-└── SUBAGENT-WORKFLOWS.md
-
-docs/
-├── QUICKSTART.md
-├── MODEL-SELECTION.md
-├── SUBAGENT-GUIDE.md
-├── HOOKS-GUIDE.md
-├── SKILLS-REFERENCE.md
-└── MIGRATION-V2-V3.md
-
-Scripts:
-├── migrate-v2-to-v3.sh
-└── integrate-project.sh (updated)
-```
-
-### Modified Files
-```
-.claude/claude.md              # Add model recommendations, hook references
-.claude/settings.local.json   # Add hooks configuration
-.workspace/CLAUDE.md          # Update agent references
-README.md                      # Update for v3.0 features
-```
-
-### Deprecated/Removed
-```
-.workspace/AGENT-QUICK-REF.md  # Renamed to ROLE-PERSONAS.md
-```
+### Phase 6: Documentation
+- [ ] Create QUICKSTART.md
+- [ ] Create MIGRATION-V2-V3.md
+- [ ] Update main README.md
+- [ ] Final testing and polish
 
 ---
 
-## Success Metrics
-
-### Quantitative
-- [ ] Session start time < 5 seconds with hooks
-- [ ] Model recommendations appear for 90%+ of tasks
-- [ ] Sub-agent invocations work reliably
-- [ ] All v2.0 features still functional
-
-### Qualitative
-- [ ] Clear distinction between sub-agents and personas
-- [ ] Natural model switching feels seamless
-- [ ] Hooks provide useful session context
-- [ ] Documentation is clear and actionable
-
----
-
-## Risk Mitigation
-
-| Risk | Mitigation |
-|------|------------|
-| Breaking existing projects | Migration script + compatibility mode |
-| Hook failures blocking work | Graceful degradation, timeout handling |
-| Model confusion | Clear documentation, smart defaults |
-| Complexity overload | Progressive disclosure, sensible defaults |
-
----
-
-## Questions for Approval
-
-Before proceeding with implementation:
-
-1. **Hook Scope**: Should hooks run automatically or be opt-in initially?
-2. **Persona Retention**: Keep all 17 personas or consolidate to core set?
-3. **Skill Naming**: Use `/skill-name` or more natural invocations?
-4. **Default Model**: Sonnet 4.5 as default, or let system always recommend?
-5. **Integration Levels**: Is the 4-tier integration (Minimal/Standard/Full/Professional) appropriate?
-
----
-
-## Next Steps
-
-Upon approval:
-1. Create feature branch for v3.0 development
-2. Implement Phase 1 (Model & Hooks)
-3. Iterate with feedback
-4. Continue through remaining phases
-5. Release v3.0
-
----
-
-*Document Version: 1.0*
-*Created: January 2026*
-*Status: Awaiting Approval*
+*Document Version: 1.1*
+*Status: APPROVED - Ready for Implementation*
+*Updated: January 2026*

@@ -227,6 +227,39 @@ your-project/
 | `"Run pre-commit checks"` | Lint/format (may modify files) |
 | `"Run the test suite"` | Execute tests |
 
+### Ralph Autonomous Loop (Advanced)
+
+| Command | Effect |
+|---------|--------|
+| `/ralph-init` | Set up Ralph for a feature/phase |
+| `./.claude/ralph/ralph.sh 25` | Run 25 autonomous iterations |
+
+---
+
+## Ralph: Autonomous Development (Advanced)
+
+For overnight, unattended development sessions, Ralph runs Claude Code repeatedly until all tasks complete.
+
+**Best For**:
+- Well-defined features with tests
+- Overnight batch work
+- Code migrations (React 16→19)
+- Large refactors with clear scope
+
+**Quick Start**:
+```bash
+# Initialize Ralph with your feature specs
+/ralph-init
+
+# Run autonomously (up to 25 iterations)
+./.claude/ralph/ralph.sh 25
+
+# Monitor progress
+tail -f .claude/ralph/progress.txt
+```
+
+See `.claude/RALPH.md` for complete documentation, best practices, and pitfalls.
+
 ---
 
 ## Context Management

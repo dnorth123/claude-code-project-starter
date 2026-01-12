@@ -219,6 +219,43 @@ After Phase 0 completion:
 
 ---
 
+## Output Styles & Skills (v3.1)
+
+### Output Styles
+
+Control how Claude approaches your work. See `.claude/output-styles/README.md`.
+
+| Style | When to Use | Invocation |
+|-------|-------------|------------|
+| `thinking-mode` | Complex problems, architecture decisions | "Think through this first" |
+| `research-mode` | Understanding, exploring options | "Research this, don't code yet" |
+| `implementation-mode` | Building features (default) | "Build it" / normal requests |
+| `documentation-mode` | Writing docs, guides | "Document how this works" |
+| `review-mode` | Code review, audits | "Review this code" |
+
+**Key Insight**: By default, AI jumps to producing artifacts. Use `thinking-mode` or `research-mode` to explore before implementing.
+
+### Agent Skills
+
+Packaged workflows that activate automatically. See `.claude/skills/README.md`.
+
+| Skill | Purpose | Activation |
+|-------|---------|------------|
+| `catch-up` | Rebuild context after break | "Catch me up on..." |
+| `parallel-research` | Research N topics simultaneously | "Research these competitors..." |
+| `blob-converter` | Convert PDF/DOCX to Markdown | "Convert this document..." |
+| `self-verify` | Verify implementation correctness | "Verify this works" |
+
+### Thinking vs. Writing
+
+See `.claude/THINKING-VS-WRITING.md` for the full protocol.
+
+**Quick Rule**:
+- **Thinking Mode**: "What should we build?" (explore first)
+- **Writing Mode**: "Build X" (requirements clear)
+
+---
+
 ## Project Documentation
 
 ### Core Docs (Persistent)

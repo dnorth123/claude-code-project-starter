@@ -3,9 +3,42 @@
 [![Use this template](https://img.shields.io/badge/Use%20this-template-blue?style=for-the-badge)](https://github.com/dnorth123/claude-code-project-starter/generate)
 [![Claude Code Compatible](https://img.shields.io/badge/Claude%20Code-Compatible-orange?style=for-the-badge)](https://claude.ai)
 [![MIT License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-v3.0.0-purple?style=for-the-badge)](https://github.com/dnorth123/claude-code-project-starter/releases)
+[![Version](https://img.shields.io/badge/Version-v3.1.0-purple?style=for-the-badge)](https://github.com/dnorth123/claude-code-project-starter/releases)
 
 **An intelligent development companion** that maximizes Claude Code's latest capabilities. Dynamic model recommendations, real sub-agents, automated hooks, and structured workflows - all designed for personal projects that can scale to professional quality.
+
+---
+
+## What's New in v3.1.0
+
+### Output Styles System
+Control **how Claude approaches your work** - not just what it does:
+
+| Style | Purpose | Invocation |
+|-------|---------|------------|
+| `thinking-mode` | Explore before implementing | "Think through this first" |
+| `research-mode` | Deep exploration, no code | "Research this, don't code yet" |
+| `implementation-mode` | Build features (default) | Normal requests |
+| `documentation-mode` | Technical writing | "Document how this works" |
+| `review-mode` | Critical analysis | "Review this code" |
+
+### Agent Skills
+**Packaged, reproducible workflows** that activate automatically:
+
+- **`catch-up`**: "Catch me up on the last 3 days" - rebuilds context after breaks
+- **`parallel-research`**: Research 15 competitors simultaneously (5x faster)
+- **`blob-converter`**: Convert PDFs/DOCX to Markdown for better AI processing
+- **`self-verify`**: Verification-led development - Claude verifies its own work
+
+### Thinking vs. Writing Protocol
+Explicit control over exploration vs. production:
+
+> "By default, AI models jump to creating artifacts. Use thinking-mode to explore complex problems before drafting anything."
+
+```
+Thinking Mode: "What should we build?"  → Questions, options, trade-offs
+Writing Mode:  "Build X"                → Code, docs, artifacts
+```
 
 ---
 
@@ -177,6 +210,18 @@ your-project/
 │   ├── MODEL-STRATEGY.md      # Model recommendations
 │   ├── SUBAGENTS.md           # Sub-agent patterns
 │   ├── PERSONAS.md            # 8 role personas
+│   ├── THINKING-VS-WRITING.md # Exploration vs. production (v3.1)
+│   ├── output-styles/         # Output style definitions (v3.1)
+│   │   ├── thinking-mode.md
+│   │   ├── research-mode.md
+│   │   ├── implementation-mode.md
+│   │   ├── documentation-mode.md
+│   │   └── review-mode.md
+│   ├── skills/                # Agent skills (v3.1)
+│   │   ├── catch-up.md
+│   │   ├── parallel-research.md
+│   │   ├── blob-converter.md
+│   │   └── self-verify.md
 │   └── hooks/
 │       ├── auto/              # Auto-run on session start
 │       │   └── session-start.sh
@@ -345,6 +390,9 @@ See [MIGRATION-V2-V3.md](docs/MIGRATION-V2-V3.md) for upgrade instructions.
 | `.claude/MODEL-STRATEGY.md` | Model recommendation guide |
 | `.claude/SUBAGENTS.md` | Sub-agent patterns |
 | `.claude/PERSONAS.md` | 8 role personas |
+| `.claude/THINKING-VS-WRITING.md` | Thinking vs. writing protocol (v3.1) |
+| `.claude/output-styles/README.md` | Output styles guide (v3.1) |
+| `.claude/skills/README.md` | Agent skills guide (v3.1) |
 | `.claude/hooks/README.md` | Hooks documentation |
 
 ---
@@ -385,7 +433,7 @@ Built for the Claude Code community.
 3. **Start Claude Code** (`claude`)
 4. **Say**: "Check the docs/project/ folder and help me get started"
 
-**Happy coding with Claude Code v3.0!**
+**Happy coding with Claude Code v3.1!**
 
 ---
 

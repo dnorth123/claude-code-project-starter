@@ -1,0 +1,42 @@
+# Ralph Progress Log
+
+Started: [DATE]
+Project: [PROJECT_NAME]
+Branch: [BRANCH_NAME]
+
+## Codebase Patterns
+
+<!--
+Add reusable patterns discovered during development here.
+Ralph reads this section FIRST before each iteration.
+Keep patterns concise and actionable.
+-->
+
+- [Example] Migrations: Use IF NOT EXISTS for idempotency
+- [Example] Components: Export from index.ts barrel files
+- [Example] Tests: Use data-testid for element selection
+
+## Key Files
+
+<!-- List important files for this feature -->
+
+- src/[feature]/index.ts
+- tests/[feature].test.ts
+
+## Dependencies & Setup
+
+<!-- Document any setup steps or external dependencies -->
+
+- Requires: [dependency]
+- Dev server: npm run dev
+- Test command: npm test
+
+---
+
+<!--
+=================================================================
+RALPH APPENDS LEARNINGS BELOW THIS LINE
+Do not edit below unless cleaning up old entries
+=================================================================
+-->
+

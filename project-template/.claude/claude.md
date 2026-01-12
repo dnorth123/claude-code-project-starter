@@ -338,7 +338,22 @@ Claude: [Updates all docs, commits, prepares summary]
 # Resume fresh:
 You: "Check the build status and tell me where we are at"
 Claude: [Loads ~4K tokens, provides status, ready to continue]
-````
+```
+
+### Ralph Autonomous Loop (Advanced)
+```bash
+# Initialize Ralph for a feature/phase
+/ralph-init
+
+# Run Ralph autonomously (25 iterations max)
+./.claude/ralph/ralph.sh 25
+
+# Monitor progress
+tail -f .claude/ralph/progress.txt
+cat .claude/ralph/prd.json | jq '.userStories[] | {id, passes}'
+```
+
+See `.claude/RALPH.md` for full documentation.
 
 Session Commands History
 Will track commands used this session:

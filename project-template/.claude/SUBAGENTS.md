@@ -420,5 +420,36 @@ Sub-agents handle **execution**. Personas provide **perspective**.
 
 ---
 
+## Advanced: Ralph Autonomous Loop
+
+For unattended, multi-hour development sessions, see the **Ralph pattern** in `.claude/RALPH.md`.
+
+**What is Ralph?**
+An autonomous loop that runs Claude Code repeatedly until all tasks complete. Unlike sub-agents (single tasks), Ralph handles entire features overnight.
+
+**When to Use Ralph vs. Sub-Agents**
+
+| Scenario | Use |
+|----------|-----|
+| Single exploration task | Explore Agent |
+| Plan one feature | Plan Agent |
+| Run tests | Bash Agent |
+| Multi-step implementation (attended) | General-Purpose Agent |
+| **Entire feature overnight (unattended)** | **Ralph** |
+| **Batch migrations** | **Ralph** |
+
+**Quick Start**
+```bash
+# Initialize Ralph for a feature
+/ralph-init
+
+# Run autonomously (up to 25 iterations)
+./.claude/ralph/ralph.sh 25
+```
+
+See `.claude/RALPH.md` for complete documentation, best practices, and pitfalls.
+
+---
+
 *Last Updated: January 2026*
 *Template Version: 3.0*

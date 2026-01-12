@@ -1,0 +1,45 @@
+{
+  "projectName": "Your Feature Name",
+  "branchName": "ralph/feature-name",
+  "description": "Brief description of what this Ralph session will accomplish",
+  "qualityCommands": {
+    "typecheck": "npm run typecheck",
+    "test": "npm test",
+    "lint": "npm run lint"
+  },
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "First task - keep it small and specific",
+      "description": "Detailed description of what needs to be done",
+      "acceptanceCriteria": [
+        "Specific, verifiable criterion 1",
+        "Specific, verifiable criterion 2",
+        "typecheck passes",
+        "tests pass"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-002",
+      "title": "Second task - depends on US-001",
+      "description": "Detailed description",
+      "acceptanceCriteria": [
+        "Specific criterion",
+        "typecheck passes",
+        "tests pass"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": ""
+    }
+  ],
+  "metadata": {
+    "createdAt": "",
+    "estimatedIterations": 10,
+    "maxIterations": 25,
+    "sourceDocument": "docs/project/project-plan.md"
+  }
+}
